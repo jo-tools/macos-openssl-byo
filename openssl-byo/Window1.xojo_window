@@ -10,7 +10,7 @@ Begin Window Window1
    HasBackColor    =   False
    Height          =   260
    ImplicitInstance=   True
-   LiveResize      =   True
+   LiveResize      =   "True"
    MacProcID       =   0
    MaxHeight       =   32000
    MaximizeButton  =   False
@@ -466,11 +466,12 @@ End
 #tag WindowCode
 	#tag Method, Flags = &h21
 		Private Function BinaryToHexString(psBinary As String) As String
+		  Dim iTo As Integer = psBinary.Bytes
 		  Dim sResult, sChar As String
-		  For iPos As Integer = 1 To LenB(psBinary)
-		    sChar = MidB(psBinary, iPos, 1)
-		    sChar = Hex(AscB(sChar))
-		    If (LenB(sChar) = 1) Then sChar = "0" + sChar
+		  For iPos As Integer = 1 To iTo
+		    sChar = psBinary.MiddleBytes(iPos, 1)
+		    sChar = Hex(sChar.AscByte)
+		    If (sChar.Bytes = 1) Then sChar = "0" + sChar
 		    sResult = sResult + sChar
 		  Next
 		  
@@ -568,7 +569,7 @@ End
 		    sError = "This example is only for TargetMacOS"
 		  #EndIf
 		  
-		  Me.HelpTag = sError
+		  Me.Tooltip = sError
 		  If (sError <> "") Then
 		    Me.Text = sError
 		    Me.TextColor = &cFF0000
@@ -579,18 +580,23 @@ End
 #tag Events cnvAppIcon
 	#tag Event
 		Sub Paint(g As Graphics, areas() As REALbasic.Rect)
+		  #Pragma unused areas
+		  
 		  g.DrawPicture(AppIcon_64, 0, 0)
 		End Sub
 	#tag EndEvent
 	#tag Event
 		Sub MouseUp(X As Integer, Y As Integer)
 		  If (x >= 0) And (x < Me.Width) And (y > 0) And (y < Me.Height) Then
-		    ShowURL("https://www.jo-tools.ch/xojo/openssl-byo/")
+		    System.GotoURL("https://www.jo-tools.ch/xojo/openssl-byo/")
 		  End If
 		End Sub
 	#tag EndEvent
 	#tag Event
 		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  #Pragma unused X
+		  #Pragma unused Y
+		  
 		  Return True
 		End Function
 	#tag EndEvent
@@ -610,19 +616,22 @@ End
 	#tag Event
 		Sub Open()
 		  Me.Text = "OpenSSL - byo"
-		  Me.TextSize = 18
+		  Me.FontSize = 18
 		  Me.Bold = True
 		End Sub
 	#tag EndEvent
 	#tag Event
 		Sub MouseUp(X As Integer, Y As Integer)
 		  If (x >= 0) And (x < Me.Width) And (y > 0) And (y < Me.Height) Then
-		    ShowURL("https://www.jo-tools.ch/xojo/openssl-byo/")
+		    System.GotoURL("https://www.jo-tools.ch/xojo/openssl-byo/")
 		  End If
 		End Sub
 	#tag EndEvent
 	#tag Event
 		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  #Pragma unused X
+		  #Pragma unused Y
+		  
 		  Return True
 		End Function
 	#tag EndEvent
@@ -641,8 +650,8 @@ End
 #tag Events labAppVersion
 	#tag Event
 		Sub Open()
-		  If (App.ShortVersion <> "") Then
-		    Me.Text = App.ShortVersion
+		  If (App.Version <> "") Then
+		    Me.Text = App.Version
 		    Return
 		  End If
 		  
@@ -664,13 +673,16 @@ End
 	#tag EndEvent
 	#tag Event
 		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  #Pragma unused X
+		  #Pragma unused Y
+		  
 		  Return True
 		End Function
 	#tag EndEvent
 	#tag Event
 		Sub MouseUp(X As Integer, Y As Integer)
 		  If (x >= 0) And (x < Me.Width) And (y > 0) And (y < Me.Height) Then
-		    ShowURL("mailto:xojo@jo-tools.ch")
+		    System.GotoURL("mailto:xojo@jo-tools.ch")
 		  End If
 		End Sub
 	#tag EndEvent
@@ -678,13 +690,15 @@ End
 #tag Events cnvPayPal
 	#tag Event
 		Sub Paint(g As Graphics, areas() As REALbasic.Rect)
-		  g.ForeColor = &cFFFFFF
+		  #Pragma unused areas
+		  
+		  g.DrawingColor = &cFFFFFF
 		  #If (XojoVersion >= 2018.03) Then
-		    If IsDarkMode Then g.ForeColor = &cD0D0D0
+		    If Color.IsDarkMode Then g.DrawingColor = &cD0D0D0
 		  #EndIf
-		  g.FillRect(0, 0, g.Width, g.Height)
-		  g.ForeColor = &c909090
-		  g.DrawRect(0, 0, g.Width, g.Height)
+		  g.FillRectangle(0, 0, g.Width, g.Height)
+		  g.DrawingColor = &c909090
+		  g.DrawRectangle(0, 0, g.Width, g.Height)
 		  g.DrawPicture(PayPal, 3, 2, 100, 26, 0, 0, PayPal.Width, PayPal.Height)
 		End Sub
 	#tag EndEvent
@@ -702,12 +716,15 @@ End
 	#tag Event
 		Sub MouseUp(X As Integer, Y As Integer)
 		  If (x >= 0) And (x < Me.Width) And (y > 0) And (y < Me.Height) Then
-		    ShowURL("https://paypal.me/jotools")
+		    System.GotoURL("https://paypal.me/jotools")
 		  End If
 		End Sub
 	#tag EndEvent
 	#tag Event
 		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  #Pragma unused X
+		  #Pragma unused Y
+		  
 		  Return True
 		End Function
 	#tag EndEvent
@@ -738,7 +755,7 @@ End
 		        Raise err
 		      End If
 		      
-		      iRes = SHA1_Update(mbSHAContext, sData, LenB(sData))
+		      iRes = SHA1_Update(mbSHAContext, sData, sData.Bytes)
 		      If (iRes <> 1) Then
 		        Dim err As New RuntimeException
 		        err.Message = "SHA1_Update failed"
@@ -759,7 +776,7 @@ End
 		      Me.TextColor = &c00BB00
 		      
 		      //Double check with Xojo's Crypto
-		      Dim encryptedValue As String = Crypto.Hash(sData, Crypto.Algorithm.SHA1)
+		      Dim encryptedValue As String = Crypto.Hash(sData, Crypto.HashAlgorithms.SHA1)
 		      Dim sResult2 As String = Self.BinaryToHexString(encryptedValue)
 		      If (sResult <> sResult2) Then
 		        sError = "SHA1 of OpenSSL and Xojo are different"

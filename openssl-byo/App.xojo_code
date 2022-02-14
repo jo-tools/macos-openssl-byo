@@ -3,7 +3,7 @@ Protected Class App
 Inherits Application
 	#tag Event
 		Sub Open()
-		  Me.AutoQuit = True
+		  Me.AllowAutoQuit = True
 		End Sub
 	#tag EndEvent
 
