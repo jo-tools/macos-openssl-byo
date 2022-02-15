@@ -1,63 +1,62 @@
-# macos-openssl-byo
-Xojo example project: OpenSSL - byo
+# OpenSSL - byo
+Xojo example project
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
+## Description
+This example project shows how you can build your own OpenSSL Library from Source as a Universal ```.dylib``` *(arm64 and x86_64)*, include it in a Xojo project - and finally use it in your application.
+
+Included in this repository:
+- HowTo.txt - which explains all the steps
+- Build.sh - A Shell Script you can use as a template to build the OpenSSL Library yourself
+- Example Xojo Project - showing how to bundle your own built .dylib's in your application
+
+### ScreenShots
+macOS in DarkMode, but application in ```Always Light```  
+![ScreenShot: macOS - Always Light](screenshots/app-appearance_always-light.png?raw=true)
 
 
-***********************************
-* OpenSSL - Bring your own .dylib *
-***********************************
+## Xojo
+### Requirements
+[Xojo](https://www.xojo.com/) is a rapid application development for Desktop, Web, Mobile & Raspberry Pi.  
 
-How to: Build OpenSSL
----------------------
-This example is building OpenSSL as a Universal Binary for Intel-64Bit and ARM-64Bit.
-It requires a macOS Version and Xcode version that is capable of building these two targets.
-I am currently using: macOS 11.2, Xcode 12.4
+The Desktop application Xojo example project ```openssl-byo.xojo_project``` is using:
+- Xojo 2021r3.1
+- API 2
 
-1. Delete all files in the folder 'openssl', except for "build.sh"
-2. Edit the Build Script "build.sh" with a TextEditor of your choice
-3. change the variable to the OpenSSL version you're going to build
-   DOWNLOAD_OPENSSL_VERSION="1.1.1k"
-4. Launch Terminal
-5. Change to the openssl folder:
-   cd /path/to/where/you/have/saved/openssl-byo/openssl
-6. just in case: the build script needs to be executable:
-   chmod 755 ./build.sh
-7. Run the Script build.sh:
-   ./build.sh
-
-The build script will perform the following steps:
-1. Download the OpenSSL source
-2. Create 2 sub-folders (one for each build target) and extract the source in there
-3. Build the 2 Targets: arm64, x86_64
-4. Combine the built .dylibs to a Universal .dylib containing both Targets
-
-Note: The build script doesn't do error checking...
-Should you noot see the expected .dylibs once it finishes, you might want to look into the Shell Output.
-
-Result:
-In your "openssl" folder you should now have 2 files:
-1. libssl.1.1.dylib
-2. libcrypto.1.1.dylib
-
-Note: The version number in the filename is being set automatically according to the version you've built.
-
-
-How to: Use your own Openssl .dylib's in a Xojo project
--------------------------------------------------------
-1. Open the example project "openssl-byo.xojo_binary_project"
-   Or create a new project, use your own, ...
+### How to use in your own Xojo project?
+1. Open the example project ```openssl-byo.xojo_project```, create a new project - or open your existing project
 2. In the Navigator, go to: Build Settings -> macOS
 3. Use a "Post Build Step: Copy Files"
-4. Drag in the two built .dylibs: libssl.1.1.dylib and libcrypto.1.1.dylib
+4. Drag in the two built .dylibs: ```libssl.1.1.dylib``` and ```libcrypto.1.1.dylib```
 5. Set the Post Build Script behavior in the Inspector:
-   1. Applies to: both
-   2. Subdirectory: (empty)
-   3. Destination: Framework folder
+   - Applies to: ```both```
+   - Subdirectory: ```(empty)```
+   - Destination: ```Framework folder```
 
 Congratulations - you're ready and set up.
 You can now use the bundled OpenSSL Library that you have just built in your own project.
 
 As an example: Get the OpenSSL Version like this:
 
+```
 Const cryptoLib = "@executable_path/../Frameworks/libcrypto.1.1.dylib"
 Declare Function OpenSSL_version Lib cryptoLib (i As Integer) As CString
-Me.Text = OpenSSL_version(0)
+SomeLabel.Text = OpenSSL_version(0)
+```
+
+## About
+Juerg Otter is a long term user of Xojo and working for [CM Informatik AG](https://cmiag.ch/). Their Application [CMI LehrerOffice](https://cmi-bildung.ch/) is a Xojo Design Award Winner 2018. In his leisure time Juerg provides some [bits and pieces for Xojo Developers](https://www.jo-tools.ch/).
+
+### Contact
+[![E-Mail](https://img.shields.io/static/v1?style=social&label=E-Mail&message=xojo@jo-tools.ch)](mailto:xojo@jo-tools.ch)
+&emsp;&emsp;
+[![Follow on Facebook](https://img.shields.io/static/v1?style=social&logo=facebook&label=Facebook&message=juerg.otter)](https://www.facebook.com/juerg.otter)
+&emsp;&emsp;
+[![Follow on Twitter](https://img.shields.io/twitter/follow/juergotter?style=social)](https://twitter.com/juergotter)
+
+### Donation
+Do you like this project? Does it help you? Has it saved you time and money?  
+You're welcome - it's free... If you want to say thanks I'd appreciate a [message](mailto:xojo@jo-tools.ch) or a small [donation via PayPal](https://paypal.me/jotools).  
+
+[![PayPal Dontation to jotools](https://img.shields.io/static/v1?style=social&logo=paypal&label=PayPal&message=jotools)](https://paypal.me/jotools)
