@@ -8,7 +8,7 @@ Begin Window Window1
    FullScreen      =   False
    FullScreenButton=   False
    HasBackColor    =   False
-   Height          =   260
+   Height          =   300
    ImplicitInstance=   True
    LiveResize      =   "True"
    MacProcID       =   0
@@ -17,7 +17,7 @@ Begin Window Window1
    MaxWidth        =   32000
    MenuBar         =   579858431
    MenuBarVisible  =   True
-   MinHeight       =   260
+   MinHeight       =   300
    MinimizeButton  =   False
    MinWidth        =   540
    Placement       =   0
@@ -45,7 +45,7 @@ Begin Window Window1
       Multiline       =   False
       Scope           =   2
       Selectable      =   False
-      TabIndex        =   8
+      TabIndex        =   11
       TabPanelIndex   =   0
       TabStop         =   True
       Text            =   "..."
@@ -54,7 +54,7 @@ Begin Window Window1
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   110
+      Top             =   150
       Transparent     =   False
       Underline       =   False
       Visible         =   True
@@ -254,7 +254,7 @@ Begin Window Window1
       Visible         =   True
       Width           =   106
    End
-   Begin Separator sepOpenSSLVersionTop
+   Begin Separator sepHeader
       AutoDeactivate  =   True
       Enabled         =   True
       Height          =   4
@@ -296,7 +296,7 @@ Begin Window Window1
       Multiline       =   False
       Scope           =   2
       Selectable      =   False
-      TabIndex        =   7
+      TabIndex        =   10
       TabPanelIndex   =   0
       TabStop         =   True
       Text            =   "OpenSSL Version:"
@@ -305,13 +305,13 @@ Begin Window Window1
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   110
+      Top             =   150
       Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   125
    End
-   Begin Separator sepOpenSSLVersionBottom
+   Begin Separator sepSHA1
       AutoDeactivate  =   True
       Enabled         =   True
       Height          =   4
@@ -325,10 +325,10 @@ Begin Window Window1
       LockRight       =   True
       LockTop         =   True
       Scope           =   2
-      TabIndex        =   9
+      TabIndex        =   12
       TabPanelIndex   =   0
       TabStop         =   True
-      Top             =   140
+      Top             =   180
       Transparent     =   True
       Visible         =   True
       Width           =   540
@@ -353,7 +353,7 @@ Begin Window Window1
       Multiline       =   True
       Scope           =   2
       Selectable      =   False
-      TabIndex        =   13
+      TabIndex        =   16
       TabPanelIndex   =   0
       TabStop         =   True
       Text            =   "This example project shows how you can build your own OpenSSL Library from Source as a Universal .dylib (arm64 and x86_64), include it in a Xojo project - and finally use it in your application."
@@ -362,7 +362,7 @@ Begin Window Window1
       TextFont        =   "SmallSystem"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   195
+      Top             =   235
       Transparent     =   False
       Underline       =   False
       Visible         =   True
@@ -388,7 +388,7 @@ Begin Window Window1
       Multiline       =   False
       Scope           =   2
       Selectable      =   False
-      TabIndex        =   10
+      TabIndex        =   13
       TabPanelIndex   =   0
       TabStop         =   True
       Text            =   "SHA1 Test:"
@@ -397,7 +397,7 @@ Begin Window Window1
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   150
+      Top             =   190
       Transparent     =   False
       Underline       =   False
       Visible         =   True
@@ -423,7 +423,7 @@ Begin Window Window1
       Multiline       =   False
       Scope           =   2
       Selectable      =   False
-      TabIndex        =   11
+      TabIndex        =   14
       TabPanelIndex   =   0
       TabStop         =   True
       Text            =   "..."
@@ -432,13 +432,13 @@ Begin Window Window1
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   150
+      Top             =   190
       Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   365
    End
-   Begin Separator sepSHA1Test
+   Begin Separator sepFooter
       AutoDeactivate  =   True
       Enabled         =   True
       Height          =   4
@@ -452,10 +452,99 @@ Begin Window Window1
       LockRight       =   True
       LockTop         =   True
       Scope           =   2
-      TabIndex        =   12
+      TabIndex        =   15
       TabPanelIndex   =   0
       TabStop         =   True
-      Top             =   180
+      Top             =   220
+      Transparent     =   True
+      Visible         =   True
+      Width           =   540
+   End
+   Begin Label labBringYourOwn
+      AllowAutoDeactivate=   True
+      Bold            =   False
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   True
+      FontName        =   "System"
+      FontSize        =   0.0
+      FontUnit        =   0
+      Height          =   20
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   False
+      Left            =   20
+      LockBottom      =   False
+      LockedInPosition=   True
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      Multiline       =   False
+      Scope           =   2
+      Selectable      =   False
+      TabIndex        =   7
+      TabPanelIndex   =   0
+      TabStop         =   True
+      Text            =   "Bring your own:"
+      TextAlignment   =   0
+      TextColor       =   &c00000000
+      Tooltip         =   ""
+      Top             =   110
+      Transparent     =   False
+      Underline       =   False
+      Visible         =   True
+      Width           =   125
+   End
+   Begin PopupMenu lstBringYourOwn
+      AllowAutoDeactivate=   True
+      Bold            =   False
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   True
+      FontName        =   "System"
+      FontSize        =   0.0
+      FontUnit        =   0
+      Height          =   20
+      Index           =   -2147483648
+      InitialParent   =   ""
+      InitialValue    =   ""
+      Italic          =   False
+      Left            =   155
+      LockBottom      =   False
+      LockedInPosition=   True
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      Scope           =   2
+      SelectedRowIndex=   0
+      TabIndex        =   8
+      TabPanelIndex   =   0
+      TabStop         =   True
+      Tooltip         =   ""
+      Top             =   110
+      Transparent     =   False
+      Underline       =   False
+      Visible         =   True
+      Width           =   100
+   End
+   Begin Separator sepOpenSSLVersion
+      AllowAutoDeactivate=   True
+      Enabled         =   True
+      Height          =   4
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Left            =   0
+      LockBottom      =   False
+      LockedInPosition=   True
+      LockLeft        =   True
+      LockRight       =   True
+      LockTop         =   True
+      Scope           =   2
+      TabIndex        =   9
+      TabPanelIndex   =   0
+      TabStop         =   True
+      Tooltip         =   ""
+      Top             =   140
       Transparent     =   True
       Visible         =   True
       Width           =   540
@@ -464,6 +553,13 @@ End
 #tag EndWindow
 
 #tag WindowCode
+	#tag Event
+		Sub Open()
+		  Self.Examples()
+		End Sub
+	#tag EndEvent
+
+
 	#tag Method, Flags = &h21
 		Private Function BinaryToHexString(psBinary As String) As String
 		  Dim iTo As Integer = psBinary.Bytes
@@ -477,6 +573,222 @@ End
 		  
 		  Return sResult
 		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub Examples()
+		  Select Case lstBringYourOwn.SelectedRowIndex
+		    
+		  Case 0 '0.9.8
+		    Me.Examples_0_9_8_Version()
+		    me.Examples_0_9_8_SHA1()
+		    
+		  Case 1 '1.1
+		    Me.Examples_1_1_Version()
+		    Me.Examples_1_1_SHA1()
+		    
+		  End Select
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub Examples_0_9_8_SHA1()
+		  Dim sError As String
+		  
+		  #If TargetMacOS Then
+		    Try
+		      Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.0.9.8.dylib"
+		      
+		      Declare Function SSLeay_version Lib constLibCrypto (i As Integer) As CString
+		      Dim sData As String = ConvertEncoding(SSLeay_version(0), Encodings.UTF8)
+		      
+		      //SHA1 Hash
+		      Declare Function SHA1_Init Lib constLibCrypto (c As Ptr) As Integer
+		      Declare Function SHA1_Update Lib constLibCrypto (c As Ptr, data As CString, mlen As Integer) As Integer
+		      Declare Function SHA1_Final Lib constLibCrypto (md As Ptr, c As Ptr) As Integer
+		      
+		      Dim mbSHAContext As New MemoryBlock(256)
+		      
+		      Dim iRes As Integer = SHA1_Init(mbSHAContext)
+		      If (iRes <> 1) Then
+		        Dim err As New RuntimeException
+		        err.Message = "SHA1_Init failed"
+		        Raise err
+		      End If
+		      
+		      iRes = SHA1_Update(mbSHAContext, sData, sData.Bytes)
+		      If (iRes <> 1) Then
+		        Dim err As New RuntimeException
+		        err.Message = "SHA1_Update failed"
+		        Raise err
+		      End If
+		      
+		      Dim mbSHA1Result As New MemoryBlock(21)
+		      iRes = SHA1_Final(mbSHA1Result, mbSHAContext)
+		      If (iRes <> 1) Then
+		        Dim err As New RuntimeException
+		        err.Message = "SHA1_Final failed"
+		        Raise err
+		      End If
+		      
+		      Dim sResultBinary As String = mbSHA1Result.CString(0)
+		      Dim sResult As String = Self.BinaryToHexString(sResultBinary)
+		      labSHA1Test.Text = sResult
+		      labSHA1Test.TextColor = &c00BB00
+		      
+		      //Double check with Xojo's Crypto
+		      Dim encryptedValue As String = Crypto.Hash(sData, Crypto.HashAlgorithms.SHA1)
+		      Dim sResult2 As String = Self.BinaryToHexString(encryptedValue)
+		      If (sResult <> sResult2) Then
+		        sError = "SHA1 of OpenSSL and Xojo are different"
+		      End If
+		      
+		      
+		    Catch e As FunctionNotFoundException
+		      sError = e.Message
+		    Catch e As RuntimeException
+		      sError = e.Message
+		    End Try
+		    
+		  #Else
+		    sError = "This example is only for TargetMacOS"
+		  #EndIf
+		  
+		  If (sError <> "") Then
+		    labSHA1Test.Text = sError
+		    labSHA1Test.TextColor = &cFF0000
+		  End If
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub Examples_0_9_8_Version()
+		  Dim sError As String
+		  
+		  #If TargetMacOS Then
+		    Try
+		      Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.0.9.8.dylib"
+		      
+		      Declare Function SSLeay_version Lib constLibCrypto (i As Integer) As CString
+		      labOpenSSLVersion.Text = SSLeay_version(0)
+		      labOpenSSLVersion.TextColor = &c00BB00
+		      
+		    Catch e As FunctionNotFoundException
+		      sError = e.Message
+		    Catch e As RuntimeException
+		      sError = e.Message
+		    End Try
+		    
+		  #Else
+		    sError = "This example is only for TargetMacOS"
+		  #EndIf
+		  
+		  labOpenSSLVersion.Tooltip = sError
+		  If (sError <> "") Then
+		    labOpenSSLVersion.Text = sError
+		    labOpenSSLVersion.TextColor = &cFF0000
+		  End If
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub Examples_1_1_SHA1()
+		  Dim sError As String
+		  
+		  #If TargetMacOS Then
+		    Try
+		      Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.1.1.dylib"
+		      
+		      Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
+		      Dim sData As String = ConvertEncoding(OpenSSL_version(0), Encodings.UTF8)
+		      
+		      //SHA1 Hash
+		      Declare Function SHA1_Init Lib constLibCrypto (c As Ptr) As Integer
+		      Declare Function SHA1_Update Lib constLibCrypto (c As Ptr, data As CString, mlen As Integer) As Integer
+		      Declare Function SHA1_Final Lib constLibCrypto (md As Ptr, c As Ptr) As Integer
+		      
+		      Dim mbSHAContext As New MemoryBlock(256)
+		      
+		      Dim iRes As Integer = SHA1_Init(mbSHAContext)
+		      If (iRes <> 1) Then
+		        Dim err As New RuntimeException
+		        err.Message = "SHA1_Init failed"
+		        Raise err
+		      End If
+		      
+		      iRes = SHA1_Update(mbSHAContext, sData, sData.Bytes)
+		      If (iRes <> 1) Then
+		        Dim err As New RuntimeException
+		        err.Message = "SHA1_Update failed"
+		        Raise err
+		      End If
+		      
+		      Dim mbSHA1Result As New MemoryBlock(21)
+		      iRes = SHA1_Final(mbSHA1Result, mbSHAContext)
+		      If (iRes <> 1) Then
+		        Dim err As New RuntimeException
+		        err.Message = "SHA1_Final failed"
+		        Raise err
+		      End If
+		      
+		      Dim sResultBinary As String = mbSHA1Result.CString(0)
+		      Dim sResult As String = Self.BinaryToHexString(sResultBinary)
+		      labSHA1Test.Text = sResult
+		      labSHA1Test.TextColor = &c00BB00
+		      
+		      //Double check with Xojo's Crypto
+		      Dim encryptedValue As String = Crypto.Hash(sData, Crypto.HashAlgorithms.SHA1)
+		      Dim sResult2 As String = Self.BinaryToHexString(encryptedValue)
+		      If (sResult <> sResult2) Then
+		        sError = "SHA1 of OpenSSL and Xojo are different"
+		      End If
+		      
+		      
+		    Catch e As FunctionNotFoundException
+		      sError = e.Message
+		    Catch e As RuntimeException
+		      sError = e.Message
+		    End Try
+		    
+		  #Else
+		    sError = "This example is only for TargetMacOS"
+		  #EndIf
+		  
+		  If (sError <> "") Then
+		    labSHA1Test.Text = sError
+		    labSHA1Test.TextColor = &cFF0000
+		  End If
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub Examples_1_1_Version()
+		  Dim sError As String
+		  
+		  #If TargetMacOS Then
+		    Try
+		      Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.1.1.dylib"
+		      
+		      Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
+		      labOpenSSLVersion.Text = OpenSSL_version(0)
+		      labOpenSSLVersion.TextColor = &c00BB00
+		      
+		    Catch e As FunctionNotFoundException
+		      sError = e.Message
+		    Catch e As RuntimeException
+		      sError = e.Message
+		    End Try
+		    
+		  #Else
+		    sError = "This example is only for TargetMacOS"
+		  #EndIf
+		  
+		  labOpenSSLVersion.Tooltip = sError
+		  If (sError <> "") Then
+		    labOpenSSLVersion.Text = sError
+		    labOpenSSLVersion.TextColor = &cFF0000
+		  End If
+		End Sub
 	#tag EndMethod
 
 
@@ -546,37 +858,6 @@ End
 
 #tag EndWindowCode
 
-#tag Events labOpenSSLVersion
-	#tag Event
-		Sub Open()
-		  Dim sError As String
-		  
-		  #If TargetMacOS Then
-		    Try
-		      Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.1.1.dylib"
-		      
-		      Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
-		      Me.Text = OpenSSL_version(0)
-		      Me.TextColor = &c00BB00
-		      
-		    Catch e As FunctionNotFoundException
-		      sError = e.Message
-		    Catch e As RuntimeException
-		      sError = e.Message
-		    End Try
-		    
-		  #Else
-		    sError = "This example is only for TargetMacOS"
-		  #EndIf
-		  
-		  Me.Tooltip = sError
-		  If (sError <> "") Then
-		    Me.Text = sError
-		    Me.TextColor = &cFF0000
-		  End If
-		End Sub
-	#tag EndEvent
-#tag EndEvents
 #tag Events cnvAppIcon
 	#tag Event
 		Sub Paint(g As Graphics, areas() As REALbasic.Rect)
@@ -729,74 +1010,18 @@ End
 		End Function
 	#tag EndEvent
 #tag EndEvents
-#tag Events labSHA1Test
+#tag Events lstBringYourOwn
 	#tag Event
 		Sub Open()
-		  Dim sError As String
-		  
-		  #If TargetMacOS Then
-		    Try
-		      Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.1.1.dylib"
-		      
-		      Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
-		      Dim sData As String = ConvertEncoding(OpenSSL_version(0), Encodings.UTF8)
-		      
-		      //SHA1 Hash
-		      Declare Function SHA1_Init Lib constLibCrypto (c As Ptr) As Integer
-		      Declare Function SHA1_Update Lib constLibCrypto (c As Ptr, data As CString, mlen As Integer) As Integer
-		      Declare Function SHA1_Final Lib constLibCrypto (md As Ptr, c As Ptr) As Integer
-		      
-		      Dim mbSHAContext As New MemoryBlock(256)
-		      
-		      Dim iRes As Integer = SHA1_Init(mbSHAContext)
-		      If (iRes <> 1) Then
-		        Dim err As New RuntimeException
-		        err.Message = "SHA1_Init failed"
-		        Raise err
-		      End If
-		      
-		      iRes = SHA1_Update(mbSHAContext, sData, sData.Bytes)
-		      If (iRes <> 1) Then
-		        Dim err As New RuntimeException
-		        err.Message = "SHA1_Update failed"
-		        Raise err
-		      End If
-		      
-		      Dim mbSHA1Result As New MemoryBlock(21)
-		      iRes = SHA1_Final(mbSHA1Result, mbSHAContext)
-		      If (iRes <> 1) Then
-		        Dim err As New RuntimeException
-		        err.Message = "SHA1_Final failed"
-		        Raise err
-		      End If
-		      
-		      Dim sResultBinary As String = mbSHA1Result.CString(0)
-		      Dim sResult As String = Self.BinaryToHexString(sResultBinary)
-		      Me.Text = sResult
-		      Me.TextColor = &c00BB00
-		      
-		      //Double check with Xojo's Crypto
-		      Dim encryptedValue As String = Crypto.Hash(sData, Crypto.HashAlgorithms.SHA1)
-		      Dim sResult2 As String = Self.BinaryToHexString(encryptedValue)
-		      If (sResult <> sResult2) Then
-		        sError = "SHA1 of OpenSSL and Xojo are different"
-		      End If
-		      
-		      
-		    Catch e As FunctionNotFoundException
-		      sError = e.Message
-		    Catch e As RuntimeException
-		      sError = e.Message
-		    End Try
-		    
-		  #Else
-		    sError = "This example is only for TargetMacOS"
-		  #EndIf
-		  
-		  If (sError <> "") Then
-		    Me.Text = sError
-		    Me.TextColor = &cFF0000
-		  End If
+		  me.RemoveAllRows
+		  me.AddRow "0.9.8"
+		  me.AddRow "1.1"
+		  me.SelectedRowIndex = 1
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Change()
+		  Self.Examples()
 		End Sub
 	#tag EndEvent
 #tag EndEvents
