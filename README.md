@@ -4,16 +4,16 @@ Xojo example project
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 ## Description
-This example project shows how you can build your own OpenSSL Library from Source as a Universal ```.dylib``` *(arm64 and x86_64)*, include it in a Xojo project - and finally use it in your application.
+This example project shows how you can build the [OpenSSL](https://www.openssl.org) Library from Source as a Universal ```.dylib``` *(arm64 and x86_64)*, include it in a Xojo project - and finally use it in your application.
 
 Included in this repository:
-- HowTo.txt - which explains all the steps
-- Build.sh - A Shell Script you can use as a template to build the OpenSSL Library yourself
-- Example Xojo Project - showing how to bundle your own built .dylib's in your application
+- [How to: Build OpenSSL on macOS](./openssl)  
+  - Provides [Shell Script](./openssl/3.0/build.sh) you can use as a template to build the [OpenSSL](https://www.openssl.org) Library yourself
+- Example Xojo Project - showing how to bundle your own built ```.dylib```'s in your application
 
 ### ScreenShots
-macOS in DarkMode, but application in ```Always Light```  
-![ScreenShot: macOS - Always Light](screenshots/app-appearance_always-light.png?raw=true)
+Using OpenSSL 3.0.x in a Xojo built application  
+![ScreenShot: OpenSSL - byo](screenshots/example_openssl-3.png?raw=true)
 
 
 ## Xojo
@@ -26,21 +26,20 @@ The Desktop application Xojo example project ```openssl-byo.xojo_project``` is u
 
 ### How to use in your own Xojo project?
 1. Open the example project ```openssl-byo.xojo_project```, create a new project - or open your existing project
-2. In the Navigator, go to: Build Settings -> macOS
-3. Use a "Post Build Step: Copy Files"
-4. Drag in the two built .dylibs: ```libssl.1.1.dylib``` and ```libcrypto.1.1.dylib```
+2. In the Navigator, go to: ```Build Settings -> macOS```
+3. Add a ```Post Build Step: Copy Files```
+4. Drag in the two built .dylibs: ```libssl.3.dylib``` and ```libcrypto.3.dylib```
 5. Set the Post Build Script behavior in the Inspector:
    - Applies to: ```both```
    - Subdirectory: ```(empty)```
    - Destination: ```Framework folder```
 
-Congratulations - you're ready and set up.
-You can now use the bundled OpenSSL Library that you have just built in your own project.
+You then can use the bundled OpenSSL Library that you have just built in your own project.
 
-As an example: Get the OpenSSL Version like this:
+For example: Get the OpenSSL Version like this:
 
 ```
-Const cryptoLib = "@executable_path/../Frameworks/libcrypto.1.1.dylib"
+Const cryptoLib = "@executable_path/../Frameworks/libcrypto.3.dylib"
 Declare Function OpenSSL_version Lib cryptoLib (i As Integer) As CString
 SomeLabel.Text = OpenSSL_version(0)
 ```
