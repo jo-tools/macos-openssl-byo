@@ -577,18 +577,17 @@ End
 
 	#tag Method, Flags = &h21
 		Private Sub Examples()
+		  Me.Examples_Version()
+		  
 		  Select Case lstBringYourOwn.SelectedRowIndex
 		    
 		  Case 0 '0.9.8
-		    Me.Examples_0_9_8_Version()
 		    me.Examples_0_9_8_SHA1()
 		    
 		  Case 1 '1.1
-		    Me.Examples_1_1_Version()
 		    Me.Examples_1_1_SHA1()
 		    
 		  Case 2 '3.0
-		    Me.Examples_3_0_Version()
 		    Me.Examples_3_0_SHA1()
 		    
 		  End Select
@@ -666,36 +665,6 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Sub Examples_0_9_8_Version()
-		  Dim sError As String
-		  
-		  #If TargetMacOS Then
-		    Try
-		      Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.0.9.8.dylib"
-		      
-		      Declare Function SSLeay_version Lib constLibCrypto (i As Integer) As CString
-		      labOpenSSLVersion.Text = SSLeay_version(0)
-		      labOpenSSLVersion.TextColor = &c00BB00
-		      
-		    Catch e As FunctionNotFoundException
-		      sError = e.Message
-		    Catch e As RuntimeException
-		      sError = e.Message
-		    End Try
-		    
-		  #Else
-		    sError = "This example is only for TargetMacOS"
-		  #EndIf
-		  
-		  labOpenSSLVersion.Tooltip = sError
-		  If (sError <> "") Then
-		    labOpenSSLVersion.Text = sError
-		    labOpenSSLVersion.TextColor = &cFF0000
-		  End If
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h21
 		Private Sub Examples_1_1_SHA1()
 		  Dim sError As String
 		  
@@ -761,36 +730,6 @@ End
 		  If (sError <> "") Then
 		    labSHA1Test.Text = sError
 		    labSHA1Test.TextColor = &cFF0000
-		  End If
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h21
-		Private Sub Examples_1_1_Version()
-		  Dim sError As String
-		  
-		  #If TargetMacOS Then
-		    Try
-		      Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.1.1.dylib"
-		      
-		      Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
-		      labOpenSSLVersion.Text = OpenSSL_version(0)
-		      labOpenSSLVersion.TextColor = &c00BB00
-		      
-		    Catch e As FunctionNotFoundException
-		      sError = e.Message
-		    Catch e As RuntimeException
-		      sError = e.Message
-		    End Try
-		    
-		  #Else
-		    sError = "This example is only for TargetMacOS"
-		  #EndIf
-		  
-		  labOpenSSLVersion.Tooltip = sError
-		  If (sError <> "") Then
-		    labOpenSSLVersion.Text = sError
-		    labOpenSSLVersion.TextColor = &cFF0000
 		  End If
 		End Sub
 	#tag EndMethod
@@ -866,15 +805,33 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Sub Examples_3_0_Version()
+		Private Sub Examples_Version()
 		  Dim sError As String
 		  
 		  #If TargetMacOS Then
 		    Try
-		      Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.3.dylib"
+		      Select Case lstBringYourOwn.SelectedRowIndex
+		        
+		      Case 0 '0.9.8
+		        Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.0.9.8.dylib"
+		        
+		        Declare Function SSLeay_version Lib constLibCrypto (i As Integer) As CString
+		        labOpenSSLVersion.Text = SSLeay_version(0)
+		        
+		      Case 1 '1.1
+		        Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.1.1.dylib"
+		        
+		        Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
+		        labOpenSSLVersion.Text = OpenSSL_version(0)
+		        
+		      Case 2 '3.0
+		        Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.3.dylib"
+		        
+		        Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
+		        labOpenSSLVersion.Text = OpenSSL_version(0)
+		        
+		      End Select
 		      
-		      Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
-		      labOpenSSLVersion.Text = OpenSSL_version(0)
 		      labOpenSSLVersion.TextColor = &c00BB00
 		      
 		    Catch e As FunctionNotFoundException
@@ -1121,7 +1078,7 @@ End
 		  me.AddRow "0.9.8"
 		  me.AddRow "1.1"
 		  me.AddRow "3.0"
-		  me.SelectedRowIndex = 1
+		  me.SelectedRowIndex = me.LastRowIndex
 		End Sub
 	#tag EndEvent
 	#tag Event
