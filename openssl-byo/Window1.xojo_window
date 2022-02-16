@@ -604,6 +604,7 @@ End
 		      
 		      Declare Function SSLeay_version Lib constLibCrypto (i As Integer) As CString
 		      Dim sData As String = ConvertEncoding(SSLeay_version(0), Encodings.UTF8)
+		      labSHA1Test.Tooltip = "SHA1 of '" + sData + "'"
 		      
 		      //SHA1 Hash
 		      Declare Function SHA1_Init Lib constLibCrypto (c As Ptr) As Integer
@@ -674,6 +675,7 @@ End
 		      
 		      Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
 		      Dim sData As String = ConvertEncoding(OpenSSL_version(0), Encodings.UTF8)
+		      labSHA1Test.Tooltip = "SHA1 of '" + sData + "'"
 		      
 		      //SHA1 Hash
 		      Declare Function SHA1_Init Lib constLibCrypto (c As Ptr) As Integer
@@ -744,6 +746,7 @@ End
 		      
 		      Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
 		      Dim sData As String = ConvertEncoding(OpenSSL_version(0), Encodings.UTF8)
+		      labSHA1Test.Tooltip = "SHA1 of '" + sData + "'"
 		      
 		      //SHA1 Hash
 		      Declare Function SHA1_Init Lib constLibCrypto (c As Ptr) As Integer
