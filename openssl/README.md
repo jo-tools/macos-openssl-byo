@@ -12,7 +12,7 @@ The included built ```.dylib```'s have been built using:
 
 ## Let's build OpenSSL
 There are subfolders for different OpenSSL versions.  
-Version [0.9.8](./0.9.8zh) needs some manual modifications in order to compile it for ARM-64Bit. However - it's an outdated version. So best look in the folders [1.1](./1-1) and [3.0](./3-0)
+Version [0.9.8](./0.9.8zh) needs some manual modifications in order to compile it for ARM-64Bit. However - it's an outdated version. So best look in the folders [1.1](./1.1) and [3.0](./3.0)
 
 1. Delete all files in the folder, except for ```build.sh```
 2. Edit the Build Script ```build.sh``` with a TextEditor of your choice
