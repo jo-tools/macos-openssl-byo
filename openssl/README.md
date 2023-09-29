@@ -20,7 +20,7 @@ Version [0.9.8](./0.9.8zh) needs some manual modifications in order to compile i
    - To build OpenSSL 3.0.x:  
      ```DOWNLOAD_OPENSSL_VERSION="3.0.1"```
    - To build OpenSSL 1.1.1x:  
-     ```DOWNLOAD_OPENSSL_VERSION="1.1.1l"```
+     ```DOWNLOAD_OPENSSL_VERSION="1.1.1w"```
 4. Launch Terminal
 5. Change to the openssl build folder:  
    ```cd /path/to/where/you/have/saved/openssl-byo/openssl/3.0```
