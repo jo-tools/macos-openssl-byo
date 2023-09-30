@@ -7,18 +7,18 @@ This example is building OpenSSL as a Universal Binary for Intel-64Bit and ARM-6
 It requires a macOS Version and Xcode version that is capable of building these two targets.
 
 The included built ```.dylib```'s have been built using:
-- macOS 12.2.1
-- Xcode 13.2.1
+- macOS 13.6
+- Xcode 15.0
 
 ## Let's build OpenSSL
 There are subfolders for different OpenSSL versions.  
-Version [0.9.8](./0.9.8zh) needs some manual modifications in order to compile it for ARM-64Bit. However - it's an outdated version. So best look in the folders [1.1](./1.1) and [3.0](./3.0)
+Version [0.9.8](./0.9.8zh) needs some manual modifications in order to compile it for ARM-64Bit. However - it's an outdated version. So best look in the folders [3.0](./3.0) and [1.1](./1.1).
 
 1. Delete all files in the folder, except for ```build.sh```
 2. Edit the Build Script ```build.sh``` with a TextEditor of your choice
 3. Change the variable to the OpenSSL version you're going to build:  
    - To build OpenSSL 3.0.x:  
-     ```DOWNLOAD_OPENSSL_VERSION="3.0.1"```
+     ```DOWNLOAD_OPENSSL_VERSION="3.0.11"```
    - To build OpenSSL 1.1.1x:  
      ```DOWNLOAD_OPENSSL_VERSION="1.1.1w"```
 4. Launch Terminal
