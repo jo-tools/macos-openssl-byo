@@ -8,7 +8,7 @@ This example project shows how you can build the [OpenSSL](https://www.openssl.o
 
 Included in this repository:
 - [How to: Build OpenSSL on macOS](./openssl)  
-  - Provides [Shell Script](./openssl/3.0/build.sh) you can use as a template to build the [OpenSSL](https://www.openssl.org) Library yourself
+  - A [Shell Script](./openssl/3.0/build.sh) you can use as a template to build the [OpenSSL](https://www.openssl.org) Library yourself
 - Example Xojo Project - showing how to bundle your own built ```.dylib```'s in your application
 
 ### ScreenShots
@@ -21,7 +21,7 @@ Using OpenSSL 3.0.x in a Xojo built application
 [Xojo](https://www.xojo.com/) is a rapid application development for Desktop, Web, Mobile & Raspberry Pi.  
 
 The Desktop application Xojo example project ```openssl-byo.xojo_project``` is using:
-- Xojo 2021r3.1
+- Xojo 2023r1.1
 - API 2
 
 ### How to use in your own Xojo project?
