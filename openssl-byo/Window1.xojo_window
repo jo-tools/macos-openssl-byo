@@ -1,31 +1,30 @@
-#tag Window
-Begin Window Window1
-   BackColor       =   &cFFFFFF00
+#tag DesktopWindow
+Begin DesktopWindow Window1
    Backdrop        =   0
-   CloseButton     =   True
+   BackgroundColor =   &cFFFFFF00
    Composite       =   False
-   Frame           =   0
+   DefaultLocation =   0
    FullScreen      =   False
-   FullScreenButton=   False
-   HasBackColor    =   False
+   HasBackgroundColor=   False
+   HasCloseButton  =   True
+   HasFullScreenButton=   False
+   HasMaximizeButton=   False
+   HasMinimizeButton=   False
    Height          =   300
    ImplicitInstance=   True
-   LiveResize      =   "True"
    MacProcID       =   0
-   MaxHeight       =   32000
-   MaximizeButton  =   False
-   MaxWidth        =   32000
+   MaximumHeight   =   32000
+   MaximumWidth    =   32000
    MenuBar         =   579858431
    MenuBarVisible  =   True
-   MinHeight       =   300
-   MinimizeButton  =   False
-   MinWidth        =   540
-   Placement       =   0
+   MinimumHeight   =   300
+   MinimumWidth    =   540
    Resizeable      =   False
    Title           =   "OpenSSL - Bring your own .dylib"
+   Type            =   0
    Visible         =   True
    Width           =   540
-   Begin Label labOpenSSLVersion
+   Begin DesktopLabel labOpenSSLVersion
       AutoDeactivate  =   True
       Bold            =   False
       DataField       =   ""
@@ -60,7 +59,7 @@ Begin Window Window1
       Visible         =   True
       Width           =   365
    End
-   Begin Canvas cnvAppIcon
+   Begin DesktopCanvas cnvAppIcon
       AcceptFocus     =   False
       AcceptTabs      =   False
       AutoDeactivate  =   True
@@ -87,7 +86,7 @@ Begin Window Window1
       Visible         =   True
       Width           =   64
    End
-   Begin Label labAppName
+   Begin DesktopLabel labAppName
       AutoDeactivate  =   True
       Bold            =   False
       DataField       =   ""
@@ -122,7 +121,7 @@ Begin Window Window1
       Visible         =   True
       Width           =   145
    End
-   Begin Label labThanks
+   Begin DesktopLabel labThanks
       AutoDeactivate  =   True
       Bold            =   False
       DataField       =   ""
@@ -146,7 +145,7 @@ Begin Window Window1
       TabPanelIndex   =   0
       TabStop         =   True
       Text            =   "Would you like to say 'Thank you'?"
-      TextAlign       =   2
+      TextAlign       =   3
       TextColor       =   &c66666600
       TextFont        =   "SmallSystem"
       TextSize        =   0.0
@@ -157,7 +156,7 @@ Begin Window Window1
       Visible         =   True
       Width           =   209
    End
-   Begin Label labAppVersion
+   Begin DesktopLabel labAppVersion
       AutoDeactivate  =   True
       Bold            =   False
       DataField       =   ""
@@ -192,7 +191,7 @@ Begin Window Window1
       Visible         =   True
       Width           =   145
    End
-   Begin Label labContact
+   Begin DesktopLabel labContact
       AutoDeactivate  =   True
       Bold            =   False
       DataField       =   ""
@@ -216,7 +215,7 @@ Begin Window Window1
       TabPanelIndex   =   0
       TabStop         =   True
       Text            =   "Contact"
-      TextAlign       =   1
+      TextAlign       =   2
       TextColor       =   &c0072CE00
       TextFont        =   "System"
       TextSize        =   0.0
@@ -227,7 +226,7 @@ Begin Window Window1
       Visible         =   True
       Width           =   70
    End
-   Begin Canvas cnvPayPal
+   Begin DesktopCanvas cnvPayPal
       AcceptFocus     =   False
       AcceptTabs      =   False
       AutoDeactivate  =   True
@@ -254,7 +253,7 @@ Begin Window Window1
       Visible         =   True
       Width           =   106
    End
-   Begin Separator sepHeader
+   Begin DesktopSeparator sepHeader
       AutoDeactivate  =   True
       Enabled         =   True
       Height          =   4
@@ -276,7 +275,7 @@ Begin Window Window1
       Visible         =   True
       Width           =   540
    End
-   Begin Label labOpenSSLVersionTitle
+   Begin DesktopLabel labOpenSSLVersionTitle
       AutoDeactivate  =   True
       Bold            =   False
       DataField       =   ""
@@ -311,7 +310,7 @@ Begin Window Window1
       Visible         =   True
       Width           =   125
    End
-   Begin Separator sepSHA1
+   Begin DesktopSeparator sepSHA1
       AutoDeactivate  =   True
       Enabled         =   True
       Height          =   4
@@ -333,7 +332,7 @@ Begin Window Window1
       Visible         =   True
       Width           =   540
    End
-   Begin Label labInfo
+   Begin DesktopLabel labInfo
       AutoDeactivate  =   True
       Bold            =   False
       DataField       =   ""
@@ -368,7 +367,7 @@ Begin Window Window1
       Visible         =   True
       Width           =   500
    End
-   Begin Label labSHA1TestTitle
+   Begin DesktopLabel labSHA1TestTitle
       AutoDeactivate  =   True
       Bold            =   False
       DataField       =   ""
@@ -403,7 +402,7 @@ Begin Window Window1
       Visible         =   True
       Width           =   125
    End
-   Begin Label labSHA1Test
+   Begin DesktopLabel labSHA1Test
       AutoDeactivate  =   True
       Bold            =   False
       DataField       =   ""
@@ -438,7 +437,7 @@ Begin Window Window1
       Visible         =   True
       Width           =   365
    End
-   Begin Separator sepFooter
+   Begin DesktopSeparator sepFooter
       AutoDeactivate  =   True
       Enabled         =   True
       Height          =   4
@@ -460,7 +459,7 @@ Begin Window Window1
       Visible         =   True
       Width           =   540
    End
-   Begin Label labBringYourOwn
+   Begin DesktopLabel labBringYourOwn
       AllowAutoDeactivate=   True
       Bold            =   False
       DataField       =   ""
@@ -495,7 +494,7 @@ Begin Window Window1
       Visible         =   True
       Width           =   125
    End
-   Begin PopupMenu lstBringYourOwn
+   Begin DesktopPopupMenu lstBringYourOwn
       AllowAutoDeactivate=   True
       Bold            =   False
       DataField       =   ""
@@ -527,7 +526,7 @@ Begin Window Window1
       Visible         =   True
       Width           =   100
    End
-   Begin Separator sepOpenSSLVersion
+   Begin DesktopSeparator sepOpenSSLVersion
       AllowAutoDeactivate=   True
       Enabled         =   True
       Height          =   4
@@ -550,11 +549,11 @@ Begin Window Window1
       Width           =   540
    End
 End
-#tag EndWindow
+#tag EndDesktopWindow
 
 #tag WindowCode
 	#tag Event
-		Sub Open()
+		Sub Opening() Handles Opening
 		  Self.Examples()
 		  
 		  #If TargetMacOS Then
@@ -1009,21 +1008,21 @@ End
 
 #tag Events cnvAppIcon
 	#tag Event
-		Sub Paint(g As Graphics, areas() As REALbasic.Rect)
+		Sub Paint(g As Graphics, areas() As Rect)
 		  #Pragma unused areas
 		  
 		  g.DrawPicture(AppIcon_64, 0, 0)
 		End Sub
 	#tag EndEvent
 	#tag Event
-		Sub MouseUp(X As Integer, Y As Integer)
+		Sub MouseUp(x As Integer, y As Integer)
 		  If (x >= 0) And (x < Me.Width) And (y > 0) And (y < Me.Height) Then
 		    System.GotoURL("https://www.jo-tools.ch/xojo/openssl-byo/")
 		  End If
 		End Sub
 	#tag EndEvent
 	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		Function MouseDown(x As Integer, y As Integer) As Boolean
 		  #Pragma unused X
 		  #Pragma unused Y
 		  
@@ -1044,21 +1043,21 @@ End
 #tag EndEvents
 #tag Events labAppName
 	#tag Event
-		Sub Open()
+		Sub Opening()
 		  Me.Text = "OpenSSL - byo"
 		  Me.FontSize = 18
 		  Me.Bold = True
 		End Sub
 	#tag EndEvent
 	#tag Event
-		Sub MouseUp(X As Integer, Y As Integer)
+		Sub MouseUp(x As Integer, y As Integer)
 		  If (x >= 0) And (x < Me.Width) And (y > 0) And (y < Me.Height) Then
 		    System.GotoURL("https://www.jo-tools.ch/xojo/openssl-byo/")
 		  End If
 		End Sub
 	#tag EndEvent
 	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		Function MouseDown(x As Integer, y As Integer) As Boolean
 		  #Pragma unused X
 		  #Pragma unused Y
 		  
@@ -1079,7 +1078,7 @@ End
 #tag EndEvents
 #tag Events labAppVersion
 	#tag Event
-		Sub Open()
+		Sub Opening()
 		  If (App.Version <> "") Then
 		    Me.Text = App.Version
 		    Return
@@ -1102,7 +1101,7 @@ End
 		End Sub
 	#tag EndEvent
 	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		Function MouseDown(x As Integer, y As Integer) As Boolean
 		  #Pragma unused X
 		  #Pragma unused Y
 		  
@@ -1110,7 +1109,7 @@ End
 		End Function
 	#tag EndEvent
 	#tag Event
-		Sub MouseUp(X As Integer, Y As Integer)
+		Sub MouseUp(x As Integer, y As Integer)
 		  If (x >= 0) And (x < Me.Width) And (y > 0) And (y < Me.Height) Then
 		    System.GotoURL("mailto:xojo@jo-tools.ch")
 		  End If
@@ -1119,7 +1118,7 @@ End
 #tag EndEvents
 #tag Events cnvPayPal
 	#tag Event
-		Sub Paint(g As Graphics, areas() As REALbasic.Rect)
+		Sub Paint(g As Graphics, areas() As Rect)
 		  #Pragma unused areas
 		  
 		  g.DrawingColor = &cFFFFFF
@@ -1144,14 +1143,14 @@ End
 		End Sub
 	#tag EndEvent
 	#tag Event
-		Sub MouseUp(X As Integer, Y As Integer)
+		Sub MouseUp(x As Integer, y As Integer)
 		  If (x >= 0) And (x < Me.Width) And (y > 0) And (y < Me.Height) Then
 		    System.GotoURL("https://paypal.me/jotools")
 		  End If
 		End Sub
 	#tag EndEvent
 	#tag Event
-		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		Function MouseDown(x As Integer, y As Integer) As Boolean
 		  #Pragma unused X
 		  #Pragma unused Y
 		  
@@ -1161,7 +1160,7 @@ End
 #tag EndEvents
 #tag Events lstBringYourOwn
 	#tag Event
-		Sub Open()
+		Sub Opening()
 		  Me.RemoveAllRows
 		  me.AddRow "0.9.8"
 		  me.AddRow "1.1"
@@ -1172,7 +1171,7 @@ End
 		End Sub
 	#tag EndEvent
 	#tag Event
-		Sub Change()
+		Sub SelectionChanged(item As DesktopMenuItem)
 		  Self.Examples()
 		End Sub
 	#tag EndEvent
