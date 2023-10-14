@@ -1,5 +1,5 @@
 Type=Desktop
-RBProjectVersion=2023.011
+RBProjectVersion=2023.03
 MinIDEVersion=20150400
 OrigIDEVersion=20210301
 Folder=openssl-byo;openssl-byo;&h00000000119AB7FF;&h0000000000000000;false
@@ -45,6 +45,7 @@ HiDPI=True
 DarkMode=True
 CopyRedistNextToWindowsEXE=False
 IncludePDB=False
+WinUIFramework=False
 IsWebProject=False
 LinuxBuildArchitecture=1
 MacBuildArchitecture=4
