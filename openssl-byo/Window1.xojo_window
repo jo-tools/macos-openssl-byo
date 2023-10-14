@@ -27,8 +27,6 @@ Begin DesktopWindow Window1
    Begin DesktopLabel labOpenSSLVersion
       AutoDeactivate  =   True
       Bold            =   False
-      DataField       =   ""
-      DataSource      =   ""
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
@@ -64,7 +62,6 @@ Begin DesktopWindow Window1
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
-      DoubleBuffer    =   False
       Enabled         =   True
       Height          =   64
       HelpTag         =   "https://www.jo-tools.ch/xojo/openssl-byo/"
@@ -89,8 +86,6 @@ Begin DesktopWindow Window1
    Begin DesktopLabel labAppName
       AutoDeactivate  =   True
       Bold            =   False
-      DataField       =   ""
-      DataSource      =   ""
       Enabled         =   True
       Height          =   30
       HelpTag         =   "https://www.jo-tools.ch/xojo/openssl-byo/"
@@ -124,8 +119,6 @@ Begin DesktopWindow Window1
    Begin DesktopLabel labThanks
       AutoDeactivate  =   True
       Bold            =   False
-      DataField       =   ""
-      DataSource      =   ""
       Enabled         =   True
       Height          =   30
       HelpTag         =   ""
@@ -159,8 +152,6 @@ Begin DesktopWindow Window1
    Begin DesktopLabel labAppVersion
       AutoDeactivate  =   True
       Bold            =   False
-      DataField       =   ""
-      DataSource      =   ""
       Enabled         =   True
       Height          =   30
       HelpTag         =   ""
@@ -194,8 +185,6 @@ Begin DesktopWindow Window1
    Begin DesktopLabel labContact
       AutoDeactivate  =   True
       Bold            =   False
-      DataField       =   ""
-      DataSource      =   ""
       Enabled         =   True
       Height          =   30
       HelpTag         =   "xojo@jo-tools.ch"
@@ -231,7 +220,6 @@ Begin DesktopWindow Window1
       AcceptTabs      =   False
       AutoDeactivate  =   True
       Backdrop        =   0
-      DoubleBuffer    =   False
       Enabled         =   True
       Height          =   30
       HelpTag         =   "https://paypal.me/jotools"
@@ -254,6 +242,7 @@ Begin DesktopWindow Window1
       Width           =   106
    End
    Begin DesktopSeparator sepHeader
+      AllowTabStop    =   True
       AutoDeactivate  =   True
       Enabled         =   True
       Height          =   4
@@ -269,7 +258,6 @@ Begin DesktopWindow Window1
       Scope           =   2
       TabIndex        =   6
       TabPanelIndex   =   0
-      TabStop         =   True
       Top             =   100
       Transparent     =   True
       Visible         =   True
@@ -278,8 +266,6 @@ Begin DesktopWindow Window1
    Begin DesktopLabel labOpenSSLVersionTitle
       AutoDeactivate  =   True
       Bold            =   False
-      DataField       =   ""
-      DataSource      =   ""
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
@@ -311,6 +297,7 @@ Begin DesktopWindow Window1
       Width           =   125
    End
    Begin DesktopSeparator sepSHA1
+      AllowTabStop    =   True
       AutoDeactivate  =   True
       Enabled         =   True
       Height          =   4
@@ -326,7 +313,6 @@ Begin DesktopWindow Window1
       Scope           =   2
       TabIndex        =   12
       TabPanelIndex   =   0
-      TabStop         =   True
       Top             =   180
       Transparent     =   True
       Visible         =   True
@@ -335,8 +321,6 @@ Begin DesktopWindow Window1
    Begin DesktopLabel labInfo
       AutoDeactivate  =   True
       Bold            =   False
-      DataField       =   ""
-      DataSource      =   ""
       Enabled         =   True
       Height          =   50
       HelpTag         =   ""
@@ -370,8 +354,6 @@ Begin DesktopWindow Window1
    Begin DesktopLabel labSHA1TestTitle
       AutoDeactivate  =   True
       Bold            =   False
-      DataField       =   ""
-      DataSource      =   ""
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
@@ -405,8 +387,6 @@ Begin DesktopWindow Window1
    Begin DesktopLabel labSHA1Test
       AutoDeactivate  =   True
       Bold            =   False
-      DataField       =   ""
-      DataSource      =   ""
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
@@ -438,6 +418,7 @@ Begin DesktopWindow Window1
       Width           =   365
    End
    Begin DesktopSeparator sepFooter
+      AllowTabStop    =   True
       AutoDeactivate  =   True
       Enabled         =   True
       Height          =   4
@@ -453,7 +434,6 @@ Begin DesktopWindow Window1
       Scope           =   2
       TabIndex        =   15
       TabPanelIndex   =   0
-      TabStop         =   True
       Top             =   220
       Transparent     =   True
       Visible         =   True
@@ -462,8 +442,6 @@ Begin DesktopWindow Window1
    Begin DesktopLabel labBringYourOwn
       AllowAutoDeactivate=   True
       Bold            =   False
-      DataField       =   ""
-      DataSource      =   ""
       Enabled         =   True
       FontName        =   "System"
       FontSize        =   0.0
@@ -497,8 +475,6 @@ Begin DesktopWindow Window1
    Begin DesktopPopupMenu lstBringYourOwn
       AllowAutoDeactivate=   True
       Bold            =   False
-      DataField       =   ""
-      DataSource      =   ""
       Enabled         =   True
       FontName        =   "System"
       FontSize        =   0.0
@@ -528,6 +504,7 @@ Begin DesktopWindow Window1
    End
    Begin DesktopSeparator sepOpenSSLVersion
       AllowAutoDeactivate=   True
+      AllowTabStop    =   True
       Enabled         =   True
       Height          =   4
       Index           =   -2147483648
@@ -541,7 +518,6 @@ Begin DesktopWindow Window1
       Scope           =   2
       TabIndex        =   9
       TabPanelIndex   =   0
-      TabStop         =   True
       Tooltip         =   ""
       Top             =   140
       Transparent     =   True
@@ -553,7 +529,7 @@ End
 
 #tag WindowCode
 	#tag Event
-		Sub Opening() Handles Opening
+		Sub Opening()
 		  Self.Examples()
 		  
 		  #If TargetMacOS Then
@@ -1172,6 +1148,8 @@ End
 	#tag EndEvent
 	#tag Event
 		Sub SelectionChanged(item As DesktopMenuItem)
+		  #Pragma unused item
+		  
 		  Self.Examples()
 		End Sub
 	#tag EndEvent
