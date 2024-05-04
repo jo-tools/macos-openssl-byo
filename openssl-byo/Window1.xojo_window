@@ -25,11 +25,13 @@ Begin DesktopWindow Window1
    Visible         =   True
    Width           =   540
    Begin DesktopLabel labOpenSSLVersion
-      AutoDeactivate  =   True
+      AllowAutoDeactivate=   True
       Bold            =   False
       Enabled         =   True
+      FontName        =   "System"
+      FontSize        =   0.0
+      FontUnit        =   0
       Height          =   20
-      HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
@@ -46,11 +48,9 @@ Begin DesktopWindow Window1
       TabPanelIndex   =   0
       TabStop         =   True
       Text            =   "..."
-      TextAlign       =   0
+      TextAlignment   =   0
       TextColor       =   &c00000000
-      TextFont        =   "System"
-      TextSize        =   0.0
-      TextUnit        =   0
+      Tooltip         =   ""
       Top             =   150
       Transparent     =   False
       Underline       =   False
@@ -58,13 +58,13 @@ Begin DesktopWindow Window1
       Width           =   365
    End
    Begin DesktopCanvas cnvAppIcon
-      AcceptFocus     =   False
-      AcceptTabs      =   False
-      AutoDeactivate  =   True
+      AllowAutoDeactivate=   True
+      AllowFocus      =   False
+      AllowFocusRing  =   True
+      AllowTabs       =   False
       Backdrop        =   0
       Enabled         =   True
       Height          =   64
-      HelpTag         =   "https://www.jo-tools.ch/xojo/openssl-byo/"
       Index           =   -2147483648
       InitialParent   =   ""
       Left            =   50
@@ -77,18 +77,20 @@ Begin DesktopWindow Window1
       TabIndex        =   0
       TabPanelIndex   =   0
       TabStop         =   True
+      Tooltip         =   ""
       Top             =   20
       Transparent     =   True
-      UseFocusRing    =   True
       Visible         =   True
       Width           =   64
    End
    Begin DesktopLabel labAppName
-      AutoDeactivate  =   True
+      AllowAutoDeactivate=   True
       Bold            =   False
       Enabled         =   True
+      FontName        =   "System"
+      FontSize        =   0.0
+      FontUnit        =   0
       Height          =   30
-      HelpTag         =   "https://www.jo-tools.ch/xojo/openssl-byo/"
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
@@ -105,11 +107,9 @@ Begin DesktopWindow Window1
       TabPanelIndex   =   0
       TabStop         =   True
       Text            =   "OpenSSL - byo"
-      TextAlign       =   0
+      TextAlignment   =   0
       TextColor       =   &c0072D800
-      TextFont        =   "System"
-      TextSize        =   0.0
-      TextUnit        =   0
+      Tooltip         =   ""
       Top             =   20
       Transparent     =   True
       Underline       =   True
@@ -117,11 +117,13 @@ Begin DesktopWindow Window1
       Width           =   145
    End
    Begin DesktopLabel labThanks
-      AutoDeactivate  =   True
+      AllowAutoDeactivate=   True
       Bold            =   False
       Enabled         =   True
+      FontName        =   "System"
+      FontSize        =   0.0
+      FontUnit        =   0
       Height          =   30
-      HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
@@ -138,11 +140,9 @@ Begin DesktopWindow Window1
       TabPanelIndex   =   0
       TabStop         =   True
       Text            =   "Would you like to say 'Thank you'?"
-      TextAlign       =   3
+      TextAlignment   =   0
       TextColor       =   &c66666600
-      TextFont        =   "SmallSystem"
-      TextSize        =   0.0
-      TextUnit        =   0
+      Tooltip         =   ""
       Top             =   20
       Transparent     =   True
       Underline       =   False
@@ -150,11 +150,13 @@ Begin DesktopWindow Window1
       Width           =   209
    End
    Begin DesktopLabel labAppVersion
-      AutoDeactivate  =   True
+      AllowAutoDeactivate=   True
       Bold            =   False
       Enabled         =   True
+      FontName        =   "System"
+      FontSize        =   0.0
+      FontUnit        =   0
       Height          =   30
-      HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
@@ -171,11 +173,9 @@ Begin DesktopWindow Window1
       TabPanelIndex   =   0
       TabStop         =   True
       Text            =   "AppVersion"
-      TextAlign       =   0
+      TextAlignment   =   0
       TextColor       =   &c00000000
-      TextFont        =   "System"
-      TextSize        =   0.0
-      TextUnit        =   0
+      Tooltip         =   ""
       Top             =   54
       Transparent     =   True
       Underline       =   False
@@ -183,11 +183,13 @@ Begin DesktopWindow Window1
       Width           =   145
    End
    Begin DesktopLabel labContact
-      AutoDeactivate  =   True
+      AllowAutoDeactivate=   True
       Bold            =   False
       Enabled         =   True
+      FontName        =   "System"
+      FontSize        =   0.0
+      FontUnit        =   0
       Height          =   30
-      HelpTag         =   "xojo@jo-tools.ch"
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
@@ -204,11 +206,9 @@ Begin DesktopWindow Window1
       TabPanelIndex   =   0
       TabStop         =   True
       Text            =   "Contact"
-      TextAlign       =   2
+      TextAlignment   =   0
       TextColor       =   &c0072CE00
-      TextFont        =   "System"
-      TextSize        =   0.0
-      TextUnit        =   0
+      Tooltip         =   ""
       Top             =   54
       Transparent     =   True
       Underline       =   True
@@ -216,13 +216,13 @@ Begin DesktopWindow Window1
       Width           =   70
    End
    Begin DesktopCanvas cnvPayPal
-      AcceptFocus     =   False
-      AcceptTabs      =   False
-      AutoDeactivate  =   True
+      AllowAutoDeactivate=   True
+      AllowFocus      =   False
+      AllowFocusRing  =   True
+      AllowTabs       =   False
       Backdrop        =   0
       Enabled         =   True
       Height          =   30
-      HelpTag         =   "https://paypal.me/jotools"
       Index           =   -2147483648
       InitialParent   =   ""
       Left            =   414
@@ -235,18 +235,18 @@ Begin DesktopWindow Window1
       TabIndex        =   5
       TabPanelIndex   =   0
       TabStop         =   True
+      Tooltip         =   ""
       Top             =   54
       Transparent     =   True
-      UseFocusRing    =   True
       Visible         =   True
       Width           =   106
    End
    Begin DesktopSeparator sepHeader
+      Active          =   False
+      AllowAutoDeactivate=   True
       AllowTabStop    =   True
-      AutoDeactivate  =   True
       Enabled         =   True
       Height          =   4
-      HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
       Left            =   0
@@ -255,20 +255,28 @@ Begin DesktopWindow Window1
       LockLeft        =   True
       LockRight       =   True
       LockTop         =   True
+      PanelIndex      =   0
       Scope           =   2
       TabIndex        =   6
       TabPanelIndex   =   0
+      Tooltip         =   ""
       Top             =   100
       Transparent     =   True
       Visible         =   True
       Width           =   540
+      _mIndex         =   0
+      _mInitialParent =   ""
+      _mName          =   ""
+      _mPanelIndex    =   0
    End
    Begin DesktopLabel labOpenSSLVersionTitle
-      AutoDeactivate  =   True
+      AllowAutoDeactivate=   True
       Bold            =   False
       Enabled         =   True
+      FontName        =   "System"
+      FontSize        =   0.0
+      FontUnit        =   0
       Height          =   20
-      HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
@@ -285,11 +293,9 @@ Begin DesktopWindow Window1
       TabPanelIndex   =   0
       TabStop         =   True
       Text            =   "OpenSSL Version:"
-      TextAlign       =   0
+      TextAlignment   =   0
       TextColor       =   &c00000000
-      TextFont        =   "System"
-      TextSize        =   0.0
-      TextUnit        =   0
+      Tooltip         =   ""
       Top             =   150
       Transparent     =   False
       Underline       =   False
@@ -297,11 +303,11 @@ Begin DesktopWindow Window1
       Width           =   125
    End
    Begin DesktopSeparator sepSHA1
+      Active          =   False
+      AllowAutoDeactivate=   True
       AllowTabStop    =   True
-      AutoDeactivate  =   True
       Enabled         =   True
       Height          =   4
-      HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
       Left            =   0
@@ -310,20 +316,28 @@ Begin DesktopWindow Window1
       LockLeft        =   True
       LockRight       =   True
       LockTop         =   True
+      PanelIndex      =   0
       Scope           =   2
       TabIndex        =   12
       TabPanelIndex   =   0
+      Tooltip         =   ""
       Top             =   180
       Transparent     =   True
       Visible         =   True
       Width           =   540
+      _mIndex         =   0
+      _mInitialParent =   ""
+      _mName          =   ""
+      _mPanelIndex    =   0
    End
    Begin DesktopLabel labInfo
-      AutoDeactivate  =   True
+      AllowAutoDeactivate=   True
       Bold            =   False
       Enabled         =   True
+      FontName        =   "System"
+      FontSize        =   0.0
+      FontUnit        =   0
       Height          =   50
-      HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   True
@@ -340,11 +354,9 @@ Begin DesktopWindow Window1
       TabPanelIndex   =   0
       TabStop         =   True
       Text            =   "This example project shows how you can build your own OpenSSL Library from Source as a Universal .dylib (arm64 and x86_64), include it in a Xojo project - and finally use it in your application."
-      TextAlign       =   0
+      TextAlignment   =   0
       TextColor       =   &c00000000
-      TextFont        =   "SmallSystem"
-      TextSize        =   0.0
-      TextUnit        =   0
+      Tooltip         =   ""
       Top             =   235
       Transparent     =   False
       Underline       =   False
@@ -352,11 +364,13 @@ Begin DesktopWindow Window1
       Width           =   500
    End
    Begin DesktopLabel labSHA1TestTitle
-      AutoDeactivate  =   True
+      AllowAutoDeactivate=   True
       Bold            =   False
       Enabled         =   True
+      FontName        =   "System"
+      FontSize        =   0.0
+      FontUnit        =   0
       Height          =   20
-      HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
@@ -373,11 +387,9 @@ Begin DesktopWindow Window1
       TabPanelIndex   =   0
       TabStop         =   True
       Text            =   "SHA1 Test:"
-      TextAlign       =   0
+      TextAlignment   =   0
       TextColor       =   &c00000000
-      TextFont        =   "System"
-      TextSize        =   0.0
-      TextUnit        =   0
+      Tooltip         =   ""
       Top             =   190
       Transparent     =   False
       Underline       =   False
@@ -385,11 +397,13 @@ Begin DesktopWindow Window1
       Width           =   125
    End
    Begin DesktopLabel labSHA1Test
-      AutoDeactivate  =   True
+      AllowAutoDeactivate=   True
       Bold            =   False
       Enabled         =   True
+      FontName        =   "System"
+      FontSize        =   0.0
+      FontUnit        =   0
       Height          =   20
-      HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
@@ -406,11 +420,9 @@ Begin DesktopWindow Window1
       TabPanelIndex   =   0
       TabStop         =   True
       Text            =   "..."
-      TextAlign       =   0
+      TextAlignment   =   0
       TextColor       =   &c00000000
-      TextFont        =   "System"
-      TextSize        =   0.0
-      TextUnit        =   0
+      Tooltip         =   ""
       Top             =   190
       Transparent     =   False
       Underline       =   False
@@ -418,11 +430,11 @@ Begin DesktopWindow Window1
       Width           =   365
    End
    Begin DesktopSeparator sepFooter
+      Active          =   False
+      AllowAutoDeactivate=   True
       AllowTabStop    =   True
-      AutoDeactivate  =   True
       Enabled         =   True
       Height          =   4
-      HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
       Left            =   0
@@ -431,13 +443,19 @@ Begin DesktopWindow Window1
       LockLeft        =   True
       LockRight       =   True
       LockTop         =   True
+      PanelIndex      =   0
       Scope           =   2
       TabIndex        =   15
       TabPanelIndex   =   0
+      Tooltip         =   ""
       Top             =   220
       Transparent     =   True
       Visible         =   True
       Width           =   540
+      _mIndex         =   0
+      _mInitialParent =   ""
+      _mName          =   ""
+      _mPanelIndex    =   0
    End
    Begin DesktopLabel labBringYourOwn
       AllowAutoDeactivate=   True
@@ -503,6 +521,7 @@ Begin DesktopWindow Window1
       Width           =   100
    End
    Begin DesktopSeparator sepOpenSSLVersion
+      Active          =   False
       AllowAutoDeactivate=   True
       AllowTabStop    =   True
       Enabled         =   True
@@ -515,6 +534,7 @@ Begin DesktopWindow Window1
       LockLeft        =   True
       LockRight       =   True
       LockTop         =   True
+      PanelIndex      =   0
       Scope           =   2
       TabIndex        =   9
       TabPanelIndex   =   0
@@ -523,6 +543,10 @@ Begin DesktopWindow Window1
       Transparent     =   True
       Visible         =   True
       Width           =   540
+      _mIndex         =   0
+      _mInitialParent =   ""
+      _mName          =   ""
+      _mPanelIndex    =   0
    End
 End
 #tag EndDesktopWindow
@@ -573,6 +597,9 @@ End
 		    
 		  Case 3 '3.1
 		    Me.Examples_3_1_SHA1()
+		    
+		  Case 4 '3.2
+		    Me.Examples_3_2_SHA1()
 		    
 		  End Select
 		End Sub
@@ -863,6 +890,77 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
+		Private Sub Examples_3_2_SHA1()
+		  Dim sError As String
+		  
+		  #If TargetMacOS Then
+		    Try
+		      Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.3.2.dylib"
+		      
+		      Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
+		      Dim sData As String = ConvertEncoding(OpenSSL_version(0), Encodings.UTF8)
+		      labSHA1Test.Tooltip = "SHA1 of '" + sData + "'"
+		      
+		      //SHA1 Hash
+		      Declare Function SHA1_Init Lib constLibCrypto (c As Ptr) As Integer
+		      Declare Function SHA1_Update Lib constLibCrypto (c As Ptr, data As CString, mlen As Integer) As Integer
+		      Declare Function SHA1_Final Lib constLibCrypto (md As Ptr, c As Ptr) As Integer
+		      
+		      Dim mbSHAContext As New MemoryBlock(256)
+		      
+		      Dim iRes As Integer = SHA1_Init(mbSHAContext)
+		      If (iRes <> 1) Then
+		        Dim err As New RuntimeException
+		        err.Message = "SHA1_Init failed"
+		        Raise err
+		      End If
+		      
+		      iRes = SHA1_Update(mbSHAContext, sData, sData.Bytes)
+		      If (iRes <> 1) Then
+		        Dim err As New RuntimeException
+		        err.Message = "SHA1_Update failed"
+		        Raise err
+		      End If
+		      
+		      Dim mbSHA1Result As New MemoryBlock(20) 'SHA1 Length
+		      iRes = SHA1_Final(mbSHA1Result, mbSHAContext)
+		      If (iRes <> 1) Then
+		        Dim err As New RuntimeException
+		        err.Message = "SHA1_Final failed"
+		        Raise err
+		      End If
+		      
+		      Dim sResultBinary As String = mbSHA1Result
+		      Dim sResult As String = Self.BinaryToHexString(sResultBinary)
+		      labSHA1Test.Text = sResult
+		      labSHA1Test.TextColor = &c00BB00
+		      
+		      //Double check with Xojo's Crypto
+		      Dim encryptedValue As String = Crypto.Hash(sData, Crypto.HashAlgorithms.SHA1)
+		      Dim sResult2 As String = Self.BinaryToHexString(encryptedValue)
+		      If (sResult <> sResult2) Then
+		        sError = "SHA1 of OpenSSL and Xojo are different"
+		      End If
+		      
+		      
+		    Catch e As FunctionNotFoundException
+		      sError = e.Message
+		    Catch e As RuntimeException
+		      sError = e.Message
+		    End Try
+		    
+		  #Else
+		    sError = "This example is only for TargetMacOS"
+		  #EndIf
+		  
+		  If (sError <> "") Then
+		    labSHA1Test.Text = sError
+		    labSHA1Test.TextColor = &cFF0000
+		  End If
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
 		Private Sub Examples_Version()
 		  Dim sError As String
 		  
@@ -890,6 +988,12 @@ End
 		        
 		      Case 3 '3.1
 		        Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.3.1.dylib"
+		        
+		        Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
+		        labOpenSSLVersion.Text = OpenSSL_version(0)
+		        
+		      Case 4 '3.2
+		        Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.3.2.dylib"
 		        
 		        Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
 		        labOpenSSLVersion.Text = OpenSSL_version(0)
@@ -1138,11 +1242,12 @@ End
 	#tag Event
 		Sub Opening()
 		  Me.RemoveAllRows
-		  me.AddRow "0.9.8"
-		  me.AddRow "1.1"
+		  Me.AddRow "0.9.8"
+		  Me.AddRow "1.1"
 		  Me.AddRow "3.0"
 		  Me.AddRow "3.1"
-		  Me.SelectedRowIndex = Me.LastRowIndex - 1
+		  Me.AddRow "3.2"
+		  Me.SelectedRowIndex = 2
 		  
 		End Sub
 	#tag EndEvent
@@ -1204,8 +1309,7 @@ End
 			"6 - Rounded Window"
 			"7 - Global Floating Window"
 			"8 - Sheet Window"
-			"9 - Metal Window"
-			"11 - Modeless Dialog"
+			"9 - Modeless Dialog"
 		#tag EndEnumValues
 	#tag EndViewProperty
 	#tag ViewProperty
@@ -1268,8 +1372,8 @@ End
 		Visible=true
 		Group="Background"
 		InitialValue="&hFFFFFF"
-		Type="Color"
-		EditorType="Color"
+		Type="ColorGroup"
+		EditorType="ColorGroup"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Name"
@@ -1380,7 +1484,7 @@ End
 		Visible=true
 		Group="Menus"
 		InitialValue=""
-		Type="MenuBar"
+		Type="DesktopMenuBar"
 		EditorType=""
 	#tag EndViewProperty
 	#tag ViewProperty
