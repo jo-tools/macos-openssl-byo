@@ -23,6 +23,15 @@
 					FolderItem = Li4vb3BlbnNzbC8zLjIvbGliY3J5cHRvLjMuMi5keWxpYg==
 					FolderItem = Li4vb3BlbnNzbC8zLjIvbGlic3NsLjMuMi5keWxpYg==
 				End
+				Begin CopyFilesBuildStep CopyLibreSSL
+					AppliesTo = 0
+					Architecture = 0
+					Target = 0
+					Destination = 2
+					Subdirectory = 
+					FolderItem = Li4vbGlicmVzc2wvMy45LjIvbGliY3J5cHRvLjMuOS4yLmR5bGli
+					FolderItem = Li4vbGlicmVzc2wvMy45LjIvbGlic3NsLjMuOS4yLmR5bGli
+				End
 				Begin SignProjectStep Sign
 				  DeveloperID=
 				End
