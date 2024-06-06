@@ -518,7 +518,7 @@ Begin DesktopWindow Window1
       Transparent     =   False
       Underline       =   False
       Visible         =   True
-      Width           =   100
+      Width           =   140
    End
    Begin DesktopSeparator sepOpenSSLVersion
       Active          =   False
@@ -600,6 +600,12 @@ End
 		    
 		  Case 4 '3.2
 		    Me.Examples_3_2_SHA1()
+		    
+		  Case 5 'Separator
+		    Return
+		    
+		  Case 6 'LibreSSL 3.9.2
+		    Me.Examples_3_9_2_SHA1()
 		    
 		  End Select
 		End Sub
@@ -961,6 +967,77 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
+		Private Sub Examples_3_9_2_SHA1()
+		  Dim sError As String
+		  
+		  #If TargetMacOS Then
+		    Try
+		      Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.3.9.2.dylib"
+		      
+		      Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
+		      Dim sData As String = ConvertEncoding(OpenSSL_version(0), Encodings.UTF8)
+		      labSHA1Test.Tooltip = "SHA1 of '" + sData + "'"
+		      
+		      //SHA1 Hash
+		      Declare Function SHA1_Init Lib constLibCrypto (c As Ptr) As Integer
+		      Declare Function SHA1_Update Lib constLibCrypto (c As Ptr, data As CString, mlen As Integer) As Integer
+		      Declare Function SHA1_Final Lib constLibCrypto (md As Ptr, c As Ptr) As Integer
+		      
+		      Dim mbSHAContext As New MemoryBlock(256)
+		      
+		      Dim iRes As Integer = SHA1_Init(mbSHAContext)
+		      If (iRes <> 1) Then
+		        Dim err As New RuntimeException
+		        err.Message = "SHA1_Init failed"
+		        Raise err
+		      End If
+		      
+		      iRes = SHA1_Update(mbSHAContext, sData, sData.Bytes)
+		      If (iRes <> 1) Then
+		        Dim err As New RuntimeException
+		        err.Message = "SHA1_Update failed"
+		        Raise err
+		      End If
+		      
+		      Dim mbSHA1Result As New MemoryBlock(20) 'SHA1 Length
+		      iRes = SHA1_Final(mbSHA1Result, mbSHAContext)
+		      If (iRes <> 1) Then
+		        Dim err As New RuntimeException
+		        err.Message = "SHA1_Final failed"
+		        Raise err
+		      End If
+		      
+		      Dim sResultBinary As String = mbSHA1Result
+		      Dim sResult As String = Self.BinaryToHexString(sResultBinary)
+		      labSHA1Test.Text = sResult
+		      labSHA1Test.TextColor = &c00BB00
+		      
+		      //Double check with Xojo's Crypto
+		      Dim encryptedValue As String = Crypto.Hash(sData, Crypto.HashAlgorithms.SHA1)
+		      Dim sResult2 As String = Self.BinaryToHexString(encryptedValue)
+		      If (sResult <> sResult2) Then
+		        sError = "SHA1 of OpenSSL and Xojo are different"
+		      End If
+		      
+		      
+		    Catch e As FunctionNotFoundException
+		      sError = e.Message
+		    Catch e As RuntimeException
+		      sError = e.Message
+		    End Try
+		    
+		  #Else
+		    sError = "This example is only for TargetMacOS"
+		  #EndIf
+		  
+		  If (sError <> "") Then
+		    labSHA1Test.Text = sError
+		    labSHA1Test.TextColor = &cFF0000
+		  End If
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
 		Private Sub Examples_Version()
 		  Dim sError As String
 		  
@@ -994,6 +1071,15 @@ End
 		        
 		      Case 4 '3.2
 		        Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.3.2.dylib"
+		        
+		        Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
+		        labOpenSSLVersion.Text = OpenSSL_version(0)
+		        
+		      Case 5 'Separator
+		        Return
+		        
+		      Case 6 'LibreSSL 3.9.2
+		        Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.3.9.2.dylib"
 		        
 		        Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
 		        labOpenSSLVersion.Text = OpenSSL_version(0)
@@ -1242,11 +1328,18 @@ End
 	#tag Event
 		Sub Opening()
 		  Me.RemoveAllRows
-		  Me.AddRow "0.9.8"
-		  Me.AddRow "1.1"
-		  Me.AddRow "3.0"
-		  Me.AddRow "3.1"
-		  Me.AddRow "3.2"
+		  
+		  'OpenSSL
+		  Me.AddRow "OpenSSL 0.9.8"
+		  Me.AddRow "OpenSSL 1.1"
+		  Me.AddRow "OpenSSL 3.0"
+		  Me.AddRow "OpenSSL 3.1"
+		  Me.AddRow "OpenSSL 3.2"
+		  
+		  'LibreSSL
+		  Me.AddSeparator
+		  Me.AddRow "LibreSSL 3.9.2"
+		  
 		  Me.SelectedRowIndex = 2
 		  
 		End Sub
