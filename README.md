@@ -4,11 +4,11 @@ Xojo example project
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 ## Description
-This example project shows how you can build the [OpenSSL](https://www.openssl.org) Library from Source as a Universal ```.dylib``` *(arm64 and x86_64)*, include it in a Xojo project - and finally use it in your application.
+This example project shows how you can build the [OpenSSL Library](https://openssl-library.org) from Source as a Universal ```.dylib``` *(arm64 and x86_64)*, include it in a Xojo project - and finally use it in your application.
 
 Included in this repository:
 - [How to: Build OpenSSL on macOS](./openssl)  
-  - A [Shell Script](./openssl/3.0/build.sh) you can use as a template to build the [OpenSSL](https://www.openssl.org) Library yourself
+  - A [Shell Script](./openssl/3.0/build.sh) you can use as a template to build the [OpenSSL Library](https://openssl-library.org) yourself
 - Example Xojo Project - showing how to bundle your own built ```.dylib```'s in your application
 
 ### ScreenShots
@@ -21,7 +21,7 @@ Using OpenSSL 3.0.x in a Xojo built application
 [Xojo](https://www.xojo.com/) is a rapid application development for Desktop, Web, Mobile & Raspberry Pi.  
 
 The Desktop application Xojo example project ```openssl-byo.xojo_project``` is using:
-- Xojo 2024r1.1
+- Xojo 2024r4.2
 - API 2
 
 ### How to use in your own Xojo project?

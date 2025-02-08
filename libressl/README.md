@@ -1,28 +1,29 @@
 # How to: Build LibreSSL on macOS
 
 ## Intro
-This example is building LibreSSL as a Universal Binary for Intel-64Bit and ARM-64Bit.
+This example is building [LibreSSL](https://www.libressl.org) as a Universal Binary for Intel-64Bit and ARM-64Bit.
 
 ## Requirements
-It requires a macOS Version and Xcode version that is capable of building these two targets.
+It requires a macOS version and Xcode version that is capable of building these two targets.
 
 The included built ```.dylib```'s (Version 3.x) have been built using:
-- macOS 14.5
-- Xcode 15.4
+- macOS 15.3
+- Xcode 16.2
 
 ## Let's build LibreSSL
 There are subfolders for different LibreSSL versions.  
 - Version [3.9.2](./3.9.2)  
+- Version [4.0.0](./4.0.0)  
 
 How to build LibreSSL using the provided Shell Scripts:
 1. Launch Terminal
 2. Change to the LibreSSL build folder:  
-   ```cd /path/to/where/you/have/saved/openssl-byo/libressl/3.9.2```
+   ```cd /path/to/where/you/have/saved/openssl-byo/libressl/4.0.0```
 3. Delete all files in the folder, except for ```build.sh```
 4. Edit the Build Script ```build.sh``` with a TextEditor of your choice
 5. Change the variable to the LibreSSL version you're going to build:  
-   - To build LibreSSL 3.9.x:  
-     ```DOWNLOAD_LIBRESSL_VERSION="3.9.2"```
+   - To build LibreSSL 4.0.x:  
+     ```DOWNLOAD_LIBRESSL_VERSION="4.0.0"```
 6. just in case: the build script needs to be executable:  
    ```chmod 755 ./build.sh```
 7. Run the Script build.sh:  
@@ -39,7 +40,7 @@ Should you not see the expected ```.dylib```'s in the build folder once it finis
 
 Result:
 In your "libressl" folder you should now have 2 files:
-1. `libssl.3(.x).dylib`
-2. `libcrypto.3(.x).dylib`
+1. `libssl.4(.x.y).dylib`
+2. `libcrypto.4(.x.y).dylib`
 
 Note: The version number in the filename is being set automatically according to the version you've built.
