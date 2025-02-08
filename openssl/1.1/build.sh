@@ -7,7 +7,7 @@ echo ----------------------------------------------
 echo - Download: OpenSSL $DOWNLOAD_OPENSSL_VERSION
 echo ----------------------------------------------
 
-curl -O https://www.openssl.org/source/openssl-$DOWNLOAD_OPENSSL_VERSION.tar.gz
+curl -O -L https://github.com/openssl/openssl/releases/download/OpenSSL_${DOWNLOAD_OPENSSL_VERSION//./_}/openssl-$DOWNLOAD_OPENSSL_VERSION.tar.gz
 
 echo ----------------------------------------------
 echo - Extracting...
