@@ -1,13 +1,13 @@
 #!/bin/bash
 
-DOWNLOAD_OPENSSL_VERSION="3.0.13"
+DOWNLOAD_OPENSSL_VERSION="3.0.15"
 
 #Download
 echo ----------------------------------------------
 echo - Download: OpenSSL $DOWNLOAD_OPENSSL_VERSION
 echo ----------------------------------------------
 
-curl -O https://www.openssl.org/source/openssl-$DOWNLOAD_OPENSSL_VERSION.tar.gz
+curl -O -L https://github.com/openssl/openssl/releases/download/openssl-$DOWNLOAD_OPENSSL_VERSION/openssl-$DOWNLOAD_OPENSSL_VERSION.tar.gz
 
 echo ----------------------------------------------
 echo - Extracting...
@@ -31,7 +31,7 @@ echo ----------------------------------------------
 
 #Build x86_64
 cd openssl_x86_64
-./Configure darwin64-x86_64-cc -shared -mmacosx-version-min=10.10
+./Configure darwin64-x86_64-cc -shared -mmacosx-version-min=10.14
 #edit paths
 sed -i -- 's/INSTALLTOP=\/.*/INSTALLTOP=./g' ./Makefile
 sed -i -- 's/OPENSSLDIR=\/.*/OPENSSLDIR=./g' ./Makefile
@@ -46,7 +46,7 @@ echo ----------------------------------------------
 
 #Build arm64
 cd openssl_arm64
-./Configure darwin64-arm64-cc -shared -mmacosx-version-min=10.10
+./Configure darwin64-arm64-cc -shared -mmacosx-version-min=10.14
 #edit paths
 sed -i -- 's/INSTALLTOP=\/.*/INSTALLTOP=./g' ./Makefile
 sed -i -- 's/OPENSSLDIR=\/.*/OPENSSLDIR=./g' ./Makefile

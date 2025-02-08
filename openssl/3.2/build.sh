@@ -1,13 +1,13 @@
 #!/bin/bash
 
-DOWNLOAD_OPENSSL_VERSION="3.2.1"
+DOWNLOAD_OPENSSL_VERSION="3.2.3"
 
 #Download
 echo ----------------------------------------------
 echo - Download: OpenSSL $DOWNLOAD_OPENSSL_VERSION
 echo ----------------------------------------------
 
-curl -O https://www.openssl.org/source/openssl-$DOWNLOAD_OPENSSL_VERSION.tar.gz
+curl -O -L https://github.com/openssl/openssl/releases/download/openssl-$DOWNLOAD_OPENSSL_VERSION/openssl-$DOWNLOAD_OPENSSL_VERSION.tar.gz
 
 echo ----------------------------------------------
 echo - Extracting...
@@ -34,7 +34,7 @@ cd openssl_x86_64
 #modify SHLIB_VERSION so that .dylibs will have "3.2" in filename
 sed -i -- 's/SHLIB_VERSION=3$/SHLIB_VERSION=3.2/g' ./VERSION.dat
 #configure
-./Configure darwin64-x86_64-cc -shared -mmacosx-version-min=10.10
+./Configure darwin64-x86_64-cc -shared -mmacosx-version-min=10.14
 #edit paths
 sed -i -- 's/INSTALLTOP=\/.*/INSTALLTOP=./g' ./Makefile
 sed -i -- 's/OPENSSLDIR=\/.*/OPENSSLDIR=./g' ./Makefile
@@ -52,7 +52,7 @@ cd openssl_arm64
 #modify SHLIB_VERSION so that .dylibs will have "3.2" in filename
 sed -i -- 's/SHLIB_VERSION=3$/SHLIB_VERSION=3.2/g' ./VERSION.dat
 #configure
-./Configure darwin64-arm64-cc -shared -mmacosx-version-min=10.10
+./Configure darwin64-arm64-cc -shared -mmacosx-version-min=10.14
 #edit paths
 sed -i -- 's/INSTALLTOP=\/.*/INSTALLTOP=./g' ./Makefile
 sed -i -- 's/OPENSSLDIR=\/.*/OPENSSLDIR=./g' ./Makefile
