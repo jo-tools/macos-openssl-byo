@@ -554,7 +554,7 @@ End
 #tag WindowCode
 	#tag Event
 		Sub Opening()
-		  Self.Examples()
+		  Self.Examples(SSLVersion.OpenSSL30)
 		  
 		End Sub
 	#tag EndEvent
@@ -576,39 +576,37 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Sub Examples()
-		  Me.Examples_Version()
+		Private Sub Examples(selectedSSLVersion As SSLVersion)
+		  Me.Examples_Version(selectedSSLVersion)
 		  
-		  Select Case lstBringYourOwn.SelectedRowIndex
+		  Select Case selectedSSLVersion
 		    
-		  Case 0 '0.9.8
-		    me.Examples_0_9_8_SHA1()
+		  Case SSLVersion.OpenSSL098
+		    Me.Examples_0_9_8_SHA1()
 		    
-		  Case 1 '1.1
+		  Case SSLVersion.OpenSSL11
 		    Me.Examples_1_1_SHA1()
 		    
-		  Case 2 '3.0
+		  Case SSLVersion.OpenSSL30
 		    Me.Examples_3_0_SHA1()
 		    
-		  Case 3 '3.1
+		  Case SSLVersion.OpenSSL31
 		    Me.Examples_3_1_SHA1()
 		    
-		  Case 4 '3.2
+		  Case SSLVersion.OpenSSL32
 		    Me.Examples_3_2_SHA1()
 		    
-		  Case 5 '3.3
+		  Case SSLVersion.OpenSSL33
 		    Me.Examples_3_3_SHA1()
 		    
-		  Case 6 '3.4
+		  Case SSLVersion.OpenSSL34
 		    Me.Examples_3_4_SHA1()
 		    
-		  Case 7 'Separator
-		    Return
 		    
-		  Case 8 'LibreSSL 3.9.2
+		  Case SSLVersion.LibreSSL392
 		    Me.Examples_3_9_2_SHA1()
 		    
-		  Case 9 'LibreSSL 4.0.0
+		  Case SSLVersion.LibreSSL400
 		    Me.Examples_4_0_0_SHA1()
 		    
 		  End Select
@@ -1255,65 +1253,63 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Sub Examples_Version()
+		Private Sub Examples_Version(selectedSSLVersion As SSLVersion)
 		  Dim sError As String
 		  
 		  #If TargetMacOS Then
 		    Try
-		      Select Case lstBringYourOwn.SelectedRowIndex
+		      Select Case selectedSSLVersion
 		        
-		      Case 0 '0.9.8
+		      Case SSLVersion.OpenSSL098
 		        Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.0.9.8.dylib"
 		        
 		        Declare Function SSLeay_version Lib constLibCrypto (i As Integer) As CString
 		        labOpenSSLVersion.Text = SSLeay_version(0)
 		        
-		      Case 1 '1.1
+		      Case SSLVersion.OpenSSL11
 		        Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.1.1.dylib"
 		        
 		        Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
 		        labOpenSSLVersion.Text = OpenSSL_version(0)
 		        
-		      Case 2 '3.0
+		      Case SSLVersion.OpenSSL30
 		        Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.3.dylib"
 		        
 		        Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
 		        labOpenSSLVersion.Text = OpenSSL_version(0)
 		        
-		      Case 3 '3.1
+		      Case SSLVersion.OpenSSL31
 		        Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.3.1.dylib"
 		        
 		        Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
 		        labOpenSSLVersion.Text = OpenSSL_version(0)
 		        
-		      Case 4 '3.2
+		      Case SSLVersion.OpenSSL32
 		        Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.3.2.dylib"
 		        
 		        Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
 		        labOpenSSLVersion.Text = OpenSSL_version(0)
 		        
-		      Case 5 '3.3
+		      Case SSLVersion.OpenSSL33
 		        Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.3.3.dylib"
 		        
 		        Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
 		        labOpenSSLVersion.Text = OpenSSL_version(0)
 		        
-		      Case 6 '3.4
+		      Case SSLVersion.OpenSSL34
 		        Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.3.4.dylib"
 		        
 		        Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
 		        labOpenSSLVersion.Text = OpenSSL_version(0)
 		        
-		      Case 7 'Separator
-		        Return
 		        
-		      Case 8 'LibreSSL 3.9.2
+		      Case SSLVersion.LibreSSL392
 		        Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.3.9.2.dylib"
 		        
 		        Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
 		        labOpenSSLVersion.Text = OpenSSL_version(0)
 		        
-		      Case 9 'LibreSSL 4.0.0
+		      Case SSLVersion.LibreSSL400
 		        Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.4.0.0.dylib"
 		        
 		        Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
@@ -1403,6 +1399,19 @@ End
 		Me.Text = OpenSSL_version(0)
 		
 	#tag EndNote
+
+
+	#tag Enum, Name = SSLVersion, Type = Integer, Flags = &h21
+		OpenSSL098=9
+		  OpenSSL11=11
+		  OpenSSL30=30
+		  OpenSSL31=31
+		  OpenSSL32=32
+		  OpenSSL33=33
+		  OpenSSL34=34
+		  LibreSSL392=392
+		LibreSSL400=400
+	#tag EndEnum
 
 
 #tag EndWindowCode
@@ -1566,17 +1575,37 @@ End
 		  
 		  'OpenSSL
 		  Me.AddRow "OpenSSL 0.9.8"
+		  Me.RowTagAt(Me.LastAddedRowIndex) = SSLVersion.OpenSSL098
+		  
 		  Me.AddRow "OpenSSL 1.1"
+		  Me.RowTagAt(Me.LastAddedRowIndex) = SSLVersion.OpenSSL11
+		  
 		  Me.AddRow "OpenSSL 3.0"
+		  Me.RowTagAt(Me.LastAddedRowIndex) = SSLVersion.OpenSSL30
+		  
 		  Me.AddRow "OpenSSL 3.1"
+		  Me.RowTagAt(Me.LastAddedRowIndex) = SSLVersion.OpenSSL31
+		  
 		  Me.AddRow "OpenSSL 3.2"
+		  Me.RowTagAt(Me.LastAddedRowIndex) = SSLVersion.OpenSSL32
+		  
 		  Me.AddRow "OpenSSL 3.3"
+		  Me.RowTagAt(Me.LastAddedRowIndex) = SSLVersion.OpenSSL33
+		  
 		  Me.AddRow "OpenSSL 3.4"
+		  Me.RowTagAt(Me.LastAddedRowIndex) = SSLVersion.OpenSSL34
+		  
+		  
+		  Me.AddSeparator
+		  
 		  
 		  'LibreSSL
-		  Me.AddSeparator
 		  Me.AddRow "LibreSSL 3.9.2"
+		  Me.RowTagAt(Me.LastAddedRowIndex) = SSLVersion.LibreSSL392
+		  
 		  Me.AddRow "LibreSSL 4.0.0"
+		  Me.RowTagAt(Me.LastAddedRowIndex) = SSLVersion.LibreSSL400
+		  
 		  
 		  Me.SelectedRowIndex = 2
 		  
@@ -1586,7 +1615,9 @@ End
 		Sub SelectionChanged(item As DesktopMenuItem)
 		  #Pragma unused item
 		  
-		  Self.Examples()
+		  Var selectedSSLVersion As SSLVersion = Me.RowTagAt(Me.SelectedRowIndex)
+		  
+		  Self.Examples(selectedSSLVersion)
 		End Sub
 	#tag EndEvent
 #tag EndEvents
