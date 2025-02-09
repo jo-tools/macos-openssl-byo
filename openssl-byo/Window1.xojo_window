@@ -10,14 +10,14 @@ Begin DesktopWindow Window1
    HasFullScreenButton=   False
    HasMaximizeButton=   False
    HasMinimizeButton=   False
-   Height          =   300
+   Height          =   320
    ImplicitInstance=   True
    MacProcID       =   0
    MaximumHeight   =   32000
    MaximumWidth    =   32000
    MenuBar         =   579858431
    MenuBarVisible  =   True
-   MinimumHeight   =   300
+   MinimumHeight   =   320
    MinimumWidth    =   540
    Resizeable      =   False
    Title           =   "OpenSSL - Bring your own .dylib"
@@ -337,7 +337,7 @@ Begin DesktopWindow Window1
       FontName        =   "System"
       FontSize        =   0.0
       FontUnit        =   0
-      Height          =   50
+      Height          =   65
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   True
