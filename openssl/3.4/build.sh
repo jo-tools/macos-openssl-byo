@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DOWNLOAD_OPENSSL_VERSION="3.4.0"
+DOWNLOAD_OPENSSL_VERSION="3.4.1"
 
 #Download
 echo ----------------------------------------------
