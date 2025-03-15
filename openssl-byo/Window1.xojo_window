@@ -18,12 +18,12 @@ Begin DesktopWindow Window1
    MenuBar         =   579858431
    MenuBarVisible  =   True
    MinimumHeight   =   320
-   MinimumWidth    =   540
+   MinimumWidth    =   550
    Resizeable      =   False
    Title           =   "OpenSSL - Bring your own .dylib"
    Type            =   0
    Visible         =   True
-   Width           =   540
+   Width           =   550
    Begin DesktopLabel labOpenSSLVersion
       AllowAutoDeactivate=   True
       Bold            =   False
@@ -55,7 +55,7 @@ Begin DesktopWindow Window1
       Transparent     =   False
       Underline       =   False
       Visible         =   True
-      Width           =   365
+      Width           =   375
    End
    Begin DesktopCanvas cnvAppIcon
       AllowAutoDeactivate=   True
@@ -114,7 +114,7 @@ Begin DesktopWindow Window1
       Transparent     =   True
       Underline       =   True
       Visible         =   True
-      Width           =   145
+      Width           =   155
    End
    Begin DesktopLabel labThanks
       AllowAutoDeactivate=   True
@@ -140,14 +140,14 @@ Begin DesktopWindow Window1
       TabPanelIndex   =   0
       TabStop         =   True
       Text            =   "Would you like to say 'Thank you'?"
-      TextAlignment   =   0
+      TextAlignment   =   3
       TextColor       =   &c66666600
       Tooltip         =   ""
       Top             =   20
       Transparent     =   True
       Underline       =   False
       Visible         =   True
-      Width           =   209
+      Width           =   219
    End
    Begin DesktopLabel labAppVersion
       AllowAutoDeactivate=   True
@@ -180,7 +180,7 @@ Begin DesktopWindow Window1
       Transparent     =   True
       Underline       =   False
       Visible         =   True
-      Width           =   145
+      Width           =   155
    End
    Begin DesktopLabel labContact
       AllowAutoDeactivate=   True
@@ -193,7 +193,7 @@ Begin DesktopWindow Window1
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   334
+      Left            =   344
       LockBottom      =   False
       LockedInPosition=   True
       LockLeft        =   False
@@ -225,7 +225,7 @@ Begin DesktopWindow Window1
       Height          =   30
       Index           =   -2147483648
       InitialParent   =   ""
-      Left            =   414
+      Left            =   424
       LockBottom      =   False
       LockedInPosition=   True
       LockLeft        =   False
@@ -263,7 +263,7 @@ Begin DesktopWindow Window1
       Top             =   100
       Transparent     =   True
       Visible         =   True
-      Width           =   540
+      Width           =   550
       _mIndex         =   0
       _mInitialParent =   ""
       _mName          =   ""
@@ -324,7 +324,7 @@ Begin DesktopWindow Window1
       Top             =   180
       Transparent     =   True
       Visible         =   True
-      Width           =   540
+      Width           =   550
       _mIndex         =   0
       _mInitialParent =   ""
       _mName          =   ""
@@ -342,10 +342,10 @@ Begin DesktopWindow Window1
       InitialParent   =   ""
       Italic          =   True
       Left            =   20
-      LockBottom      =   False
+      LockBottom      =   True
       LockedInPosition=   True
       LockLeft        =   True
-      LockRight       =   False
+      LockRight       =   True
       LockTop         =   True
       Multiline       =   True
       Scope           =   2
@@ -361,7 +361,7 @@ Begin DesktopWindow Window1
       Transparent     =   False
       Underline       =   False
       Visible         =   True
-      Width           =   500
+      Width           =   510
    End
    Begin DesktopLabel labSHA1TestTitle
       AllowAutoDeactivate=   True
@@ -427,7 +427,7 @@ Begin DesktopWindow Window1
       Transparent     =   False
       Underline       =   False
       Visible         =   True
-      Width           =   365
+      Width           =   375
    End
    Begin DesktopSeparator sepFooter
       Active          =   False
@@ -451,7 +451,7 @@ Begin DesktopWindow Window1
       Top             =   220
       Transparent     =   True
       Visible         =   True
-      Width           =   540
+      Width           =   550
       _mIndex         =   0
       _mInitialParent =   ""
       _mName          =   ""
@@ -542,7 +542,7 @@ Begin DesktopWindow Window1
       Top             =   140
       Transparent     =   True
       Visible         =   True
-      Width           =   540
+      Width           =   550
       _mIndex         =   0
       _mInitialParent =   ""
       _mName          =   ""
