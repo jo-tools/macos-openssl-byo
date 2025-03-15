@@ -77,7 +77,7 @@ Begin DesktopWindow Window1
       TabIndex        =   0
       TabPanelIndex   =   0
       TabStop         =   True
-      Tooltip         =   ""
+      Tooltip         =   "#kUrl_Repository"
       Top             =   20
       Transparent     =   True
       Visible         =   True
@@ -109,7 +109,7 @@ Begin DesktopWindow Window1
       Text            =   "OpenSSL - byo"
       TextAlignment   =   0
       TextColor       =   &c0072D800
-      Tooltip         =   ""
+      Tooltip         =   "#kUrl_Repository"
       Top             =   20
       Transparent     =   True
       Underline       =   True
@@ -208,7 +208,7 @@ Begin DesktopWindow Window1
       Text            =   "Contact"
       TextAlignment   =   0
       TextColor       =   &c0072CE00
-      Tooltip         =   ""
+      Tooltip         =   "#kEmail_Contact"
       Top             =   54
       Transparent     =   True
       Underline       =   True
@@ -235,7 +235,7 @@ Begin DesktopWindow Window1
       TabIndex        =   5
       TabPanelIndex   =   0
       TabStop         =   True
-      Tooltip         =   ""
+      Tooltip         =   "#kUrl_PayPal"
       Top             =   54
       Transparent     =   True
       Visible         =   True
@@ -1401,6 +1401,16 @@ End
 	#tag EndNote
 
 
+	#tag Constant, Name = kEmail_Contact, Type = String, Dynamic = False, Default = \"xojo@jo-tools.ch", Scope = Private
+	#tag EndConstant
+
+	#tag Constant, Name = kUrl_PayPal, Type = String, Dynamic = False, Default = \"https://paypal.me/jotools", Scope = Private
+	#tag EndConstant
+
+	#tag Constant, Name = kUrl_Repository, Type = String, Dynamic = False, Default = \"https://github.com/jo-tools/macos-openssl-byo", Scope = Private
+	#tag EndConstant
+
+
 	#tag Enum, Name = SSLVersion, Type = Integer, Flags = &h21
 		OpenSSL098=9
 		  OpenSSL11=11
@@ -1427,7 +1437,7 @@ End
 	#tag Event
 		Sub MouseUp(x As Integer, y As Integer)
 		  If (x >= 0) And (x < Me.Width) And (y > 0) And (y < Me.Height) Then
-		    System.GotoURL("https://www.jo-tools.ch/xojo/openssl-byo/")
+		    System.GotoURL(kUrl_Repository)
 		  End If
 		End Sub
 	#tag EndEvent
@@ -1462,7 +1472,7 @@ End
 	#tag Event
 		Sub MouseUp(x As Integer, y As Integer)
 		  If (x >= 0) And (x < Me.Width) And (y > 0) And (y < Me.Height) Then
-		    System.GotoURL("https://www.jo-tools.ch/xojo/openssl-byo/")
+		    System.GotoURL(kUrl_Repository)
 		  End If
 		End Sub
 	#tag EndEvent
@@ -1521,7 +1531,7 @@ End
 	#tag Event
 		Sub MouseUp(x As Integer, y As Integer)
 		  If (x >= 0) And (x < Me.Width) And (y > 0) And (y < Me.Height) Then
-		    System.GotoURL("mailto:xojo@jo-tools.ch")
+		    System.GotoURL("mailto:" + kEmail_Contact)
 		  End If
 		End Sub
 	#tag EndEvent
@@ -1555,7 +1565,7 @@ End
 	#tag Event
 		Sub MouseUp(x As Integer, y As Integer)
 		  If (x >= 0) And (x < Me.Width) And (y > 0) And (y < Me.Height) Then
-		    System.GotoURL("https://paypal.me/jotools")
+		    System.GotoURL(kUrl_PayPal)
 		  End If
 		End Sub
 	#tag EndEvent
