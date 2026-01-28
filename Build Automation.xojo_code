@@ -37,6 +37,8 @@
 					FolderItem = Li4vbGlicmVzc2wvMy45LjIvbGlic3NsLjMuOS4yLmR5bGli
 					FolderItem = Li4vbGlicmVzc2wvNC4wLjAvbGliY3J5cHRvLjQuMC4wLmR5bGli
 					FolderItem = Li4vbGlicmVzc2wvNC4wLjAvbGlic3NsLjQuMC4wLmR5bGli
+					FolderItem = Li4vbGlicmVzc2wvNC4yLjEvbGliY3J5cHRvLjQuMi4xLmR5bGli
+					FolderItem = Li4vbGlicmVzc2wvNC4yLjEvbGlic3NsLjQuMi4xLmR5bGli
 				End
 				Begin SignProjectStep Sign
 				  DeveloperID=

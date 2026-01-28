@@ -14,16 +14,17 @@ The included built ```.dylib```'s (Version 3.x) have been built using:
 There are subfolders for different LibreSSL versions.  
 - Version [3.9.2](./3.9.2)  
 - Version [4.0.0](./4.0.0)  
+- Version [4.2.1](./4.2.1)  
 
 How to build LibreSSL using the provided Shell Scripts:
 1. Launch Terminal
 2. Change to the LibreSSL build folder:  
-   ```cd /path/to/where/you/have/saved/openssl-byo/libressl/4.0.0```
+   ```cd /path/to/where/you/have/saved/openssl-byo/libressl/4.2.1```
 3. Delete all files in the folder, except for ```build.sh```
 4. Edit the Build Script ```build.sh``` with a TextEditor of your choice
 5. Change the variable to the LibreSSL version you're going to build:  
-   - To build LibreSSL 4.0.x:  
-     ```DOWNLOAD_LIBRESSL_VERSION="4.0.0"```
+   - To build LibreSSL 4.x.y:  
+     ```DOWNLOAD_LIBRESSL_VERSION="4.2.1"```
 6. just in case: the build script needs to be executable:  
    ```chmod 755 ./build.sh```
 7. Run the Script build.sh:  
