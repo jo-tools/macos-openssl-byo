@@ -6,9 +6,14 @@ Xojo example project
 ## Description
 This example project shows how you can build the [OpenSSL Library](https://openssl-library.org) from Source as a Universal ```.dylib``` *(arm64 and x86_64)*, include it in a Xojo project - and finally use it in your application.
 
+Additionally, this repository also demonstrates how to build [LibreSSL](https://www.libressl.org) as an alternative to OpenSSL.  
+*LibreSSL is a version of the TLS/crypto stack forked from OpenSSL in 2014, with goals of modernizing the codebase, improving security, and applying best practice development processes.*
+
 Included in this repository:
 - [How to: Build OpenSSL on macOS](./openssl)  
-  - A [Shell Script](./openssl/3.0/build.sh) you can use as a template to build the [OpenSSL Library](https://openssl-library.org) yourself
+  - A [Shell Script](./openssl/3.5/build.sh) you can use as a template to build the [OpenSSL Library](https://openssl-library.org) yourself
+- [How to: Build LibreSSL on macOS](./libressl)  
+  - A [Shell Script](./libressl/4.2.1/build.sh) you can use as a template to build [LibreSSL](https://www.libressl.org) yourself
 - Example Xojo Project - showing how to bundle your own built ```.dylib```'s in your application
 
 ### ScreenShots
@@ -28,7 +33,7 @@ The Desktop application Xojo example project ```openssl-byo.xojo_project``` is u
 1. Open the example project ```openssl-byo.xojo_project```, create a new project - or open your existing project
 2. In the Navigator, go to: ```Build Settings -> macOS```
 3. Add a ```Post Build Step: Copy Files```
-4. Drag in the two built .dylibs: ```libssl.3.dylib``` and ```libcrypto.3.dylib```
+4. Drag in the two built .dylibs: ```libssl.3.5.dylib``` and ```libcrypto.3.5.dylib```
 5. Set the Post Build Script behavior in the Inspector:
    - Applies to: ```both```
    - Subdirectory: ```(empty)```
@@ -39,7 +44,7 @@ You then can use the bundled OpenSSL Library that you have just built in your ow
 For example: Get the OpenSSL Version like this:
 
 ```
-Const cryptoLib = "@executable_path/../Frameworks/libcrypto.3.dylib"
+Const cryptoLib = "@executable_path/../Frameworks/libcrypto.3.5.dylib"
 Declare Function OpenSSL_version Lib cryptoLib (i As Integer) As CString
 SomeLabel.Text = OpenSSL_version(0)
 ```
