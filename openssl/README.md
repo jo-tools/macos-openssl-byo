@@ -16,22 +16,20 @@ There are subfolders for different OpenSSL versions.
   However - it's an outdated OpenSSL version. It should no longer be used.
 - Version [1.1](./1.1)  
   Note: This version is out of support and should no longer be used.
-- For Version [3.1](./3.1), [3.2](./3.2), [3.3](./3.3) and [3.4](./3.4) the script modifies `VERSION.dat` so that .dylibs will have `3.x` in the filename.
-- So best look in the folders [3.0 (LTS)](./3.0) and [3.4](./3.4).
+- For Version [3.5 (LTS)](./3.5) and [3.6](./3.6) the script modifies `VERSION.dat` so that .dylibs will have `3.x` in the filename.
+- So best look in the folders [3.0 (LTS)](./3.0) and [3.5 (LTS)](./3.5).
 
 How to build OpenSSL using the provided Shell Scripts:
 1. Launch Terminal
 2. Change to the OpenSSL build folder:  
-   ```cd /path/to/where/you/have/saved/openssl-byo/openssl/3.0```
+   ```cd /path/to/where/you/have/saved/openssl-byo/openssl/3.5```
 3. Delete all files in the folder, except for ```build.sh```
 4. Edit the Build Script ```build.sh``` with a TextEditor of your choice
 5. Change the variable to the OpenSSL version you're going to build:  
-   - To build OpenSSL 3.0.x (LTS):  
-     ```DOWNLOAD_OPENSSL_VERSION="3.0.19"```
-   - To build OpenSSL 3.3.x:  
-     ```DOWNLOAD_OPENSSL_VERSION="3.3.2"```
-   - To build OpenSSL 3.4.x:  
-     ```DOWNLOAD_OPENSSL_VERSION="3.4.0"```
+   - To build OpenSSL 3.5.x (LTS):  
+     ```DOWNLOAD_OPENSSL_VERSION="3.5.5"```
+   - To build OpenSSL 3.6.x:  
+     ```DOWNLOAD_OPENSSL_VERSION="3.6.1"```
 6. just in case: the build script needs to be executable:  
    ```chmod 755 ./build.sh```
 7. Run the Script build.sh:  
