@@ -591,17 +591,11 @@ End
 		  Case SSLVersion.OpenSSL30
 		    Me.Examples_3_0_SHA1()
 		    
-		  Case SSLVersion.OpenSSL31
-		    Me.Examples_3_1_SHA1()
+		  Case SSLVersion.OpenSSL35
+		    Me.Examples_3_5_SHA1()
 		    
-		  Case SSLVersion.OpenSSL32
-		    Me.Examples_3_2_SHA1()
-		    
-		  Case SSLVersion.OpenSSL33
-		    Me.Examples_3_3_SHA1()
-		    
-		  Case SSLVersion.OpenSSL34
-		    Me.Examples_3_4_SHA1()
+		  Case SSLVersion.OpenSSL36
+		    Me.Examples_3_6_SHA1()
 		    
 		    
 		  Case SSLVersion.LibreSSL392
@@ -831,12 +825,12 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Sub Examples_3_1_SHA1()
+		Private Sub Examples_3_5_SHA1()
 		  Dim sError As String
 		  
 		  #If TargetMacOS Then
 		    Try
-		      Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.3.1.dylib"
+		      Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.3.5.dylib"
 		      
 		      Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
 		      Dim sData As String = ConvertEncoding(OpenSSL_version(0), Encodings.UTF8)
@@ -902,154 +896,12 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Sub Examples_3_2_SHA1()
+		Private Sub Examples_3_6_SHA1()
 		  Dim sError As String
 		  
 		  #If TargetMacOS Then
 		    Try
-		      Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.3.2.dylib"
-		      
-		      Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
-		      Dim sData As String = ConvertEncoding(OpenSSL_version(0), Encodings.UTF8)
-		      labSHA1Test.Tooltip = "SHA1 of '" + sData + "'"
-		      
-		      //SHA1 Hash
-		      Declare Function SHA1_Init Lib constLibCrypto (c As Ptr) As Integer
-		      Declare Function SHA1_Update Lib constLibCrypto (c As Ptr, data As CString, mlen As Integer) As Integer
-		      Declare Function SHA1_Final Lib constLibCrypto (md As Ptr, c As Ptr) As Integer
-		      
-		      Dim mbSHAContext As New MemoryBlock(256)
-		      
-		      Dim iRes As Integer = SHA1_Init(mbSHAContext)
-		      If (iRes <> 1) Then
-		        Dim err As New RuntimeException
-		        err.Message = "SHA1_Init failed"
-		        Raise err
-		      End If
-		      
-		      iRes = SHA1_Update(mbSHAContext, sData, sData.Bytes)
-		      If (iRes <> 1) Then
-		        Dim err As New RuntimeException
-		        err.Message = "SHA1_Update failed"
-		        Raise err
-		      End If
-		      
-		      Dim mbSHA1Result As New MemoryBlock(20) 'SHA1 Length
-		      iRes = SHA1_Final(mbSHA1Result, mbSHAContext)
-		      If (iRes <> 1) Then
-		        Dim err As New RuntimeException
-		        err.Message = "SHA1_Final failed"
-		        Raise err
-		      End If
-		      
-		      Dim sResultBinary As String = mbSHA1Result
-		      Dim sResult As String = Self.BinaryToHexString(sResultBinary)
-		      labSHA1Test.Text = sResult
-		      labSHA1Test.TextColor = &c00BB00
-		      
-		      //Double check with Xojo's Crypto
-		      Dim encryptedValue As String = Crypto.Hash(sData, Crypto.HashAlgorithms.SHA1)
-		      Dim sResult2 As String = Self.BinaryToHexString(encryptedValue)
-		      If (sResult <> sResult2) Then
-		        sError = "SHA1 of OpenSSL and Xojo are different"
-		      End If
-		      
-		      
-		    Catch e As FunctionNotFoundException
-		      sError = e.Message
-		    Catch e As RuntimeException
-		      sError = e.Message
-		    End Try
-		    
-		  #Else
-		    sError = "This example is only for TargetMacOS"
-		  #EndIf
-		  
-		  If (sError <> "") Then
-		    labSHA1Test.Text = sError
-		    labSHA1Test.TextColor = &cFF0000
-		  End If
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h21
-		Private Sub Examples_3_3_SHA1()
-		  Dim sError As String
-		  
-		  #If TargetMacOS Then
-		    Try
-		      Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.3.3.dylib"
-		      
-		      Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
-		      Dim sData As String = ConvertEncoding(OpenSSL_version(0), Encodings.UTF8)
-		      labSHA1Test.Tooltip = "SHA1 of '" + sData + "'"
-		      
-		      //SHA1 Hash
-		      Declare Function SHA1_Init Lib constLibCrypto (c As Ptr) As Integer
-		      Declare Function SHA1_Update Lib constLibCrypto (c As Ptr, data As CString, mlen As Integer) As Integer
-		      Declare Function SHA1_Final Lib constLibCrypto (md As Ptr, c As Ptr) As Integer
-		      
-		      Dim mbSHAContext As New MemoryBlock(256)
-		      
-		      Dim iRes As Integer = SHA1_Init(mbSHAContext)
-		      If (iRes <> 1) Then
-		        Dim err As New RuntimeException
-		        err.Message = "SHA1_Init failed"
-		        Raise err
-		      End If
-		      
-		      iRes = SHA1_Update(mbSHAContext, sData, sData.Bytes)
-		      If (iRes <> 1) Then
-		        Dim err As New RuntimeException
-		        err.Message = "SHA1_Update failed"
-		        Raise err
-		      End If
-		      
-		      Dim mbSHA1Result As New MemoryBlock(20) 'SHA1 Length
-		      iRes = SHA1_Final(mbSHA1Result, mbSHAContext)
-		      If (iRes <> 1) Then
-		        Dim err As New RuntimeException
-		        err.Message = "SHA1_Final failed"
-		        Raise err
-		      End If
-		      
-		      Dim sResultBinary As String = mbSHA1Result
-		      Dim sResult As String = Self.BinaryToHexString(sResultBinary)
-		      labSHA1Test.Text = sResult
-		      labSHA1Test.TextColor = &c00BB00
-		      
-		      //Double check with Xojo's Crypto
-		      Dim encryptedValue As String = Crypto.Hash(sData, Crypto.HashAlgorithms.SHA1)
-		      Dim sResult2 As String = Self.BinaryToHexString(encryptedValue)
-		      If (sResult <> sResult2) Then
-		        sError = "SHA1 of OpenSSL and Xojo are different"
-		      End If
-		      
-		      
-		    Catch e As FunctionNotFoundException
-		      sError = e.Message
-		    Catch e As RuntimeException
-		      sError = e.Message
-		    End Try
-		    
-		  #Else
-		    sError = "This example is only for TargetMacOS"
-		  #EndIf
-		  
-		  If (sError <> "") Then
-		    labSHA1Test.Text = sError
-		    labSHA1Test.TextColor = &cFF0000
-		  End If
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h21
-		Private Sub Examples_3_4_SHA1()
-		  Dim sError As String
-		  
-		  #If TargetMacOS Then
-		    Try
-		      Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.3.4.dylib"
+		      Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.3.6.dylib"
 		      
 		      Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
 		      Dim sData As String = ConvertEncoding(OpenSSL_version(0), Encodings.UTF8)
@@ -1353,26 +1205,14 @@ End
 		        Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
 		        labOpenSSLVersion.Text = OpenSSL_version(0)
 		        
-		      Case SSLVersion.OpenSSL31
-		        Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.3.1.dylib"
+		      Case SSLVersion.OpenSSL35
+		        Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.3.5.dylib"
 		        
 		        Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
 		        labOpenSSLVersion.Text = OpenSSL_version(0)
 		        
-		      Case SSLVersion.OpenSSL32
-		        Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.3.2.dylib"
-		        
-		        Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
-		        labOpenSSLVersion.Text = OpenSSL_version(0)
-		        
-		      Case SSLVersion.OpenSSL33
-		        Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.3.3.dylib"
-		        
-		        Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
-		        labOpenSSLVersion.Text = OpenSSL_version(0)
-		        
-		      Case SSLVersion.OpenSSL34
-		        Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.3.4.dylib"
+		      Case SSLVersion.OpenSSL36
+		        Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.3.6.dylib"
 		        
 		        Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
 		        labOpenSSLVersion.Text = OpenSSL_version(0)
@@ -1496,10 +1336,8 @@ End
 		OpenSSL098=9
 		  OpenSSL11=11
 		  OpenSSL30=30
-		  OpenSSL31=31
-		  OpenSSL32=32
-		  OpenSSL33=33
-		  OpenSSL34=34
+		  OpenSSL35=35
+		  OpenSSL36=36
 		  LibreSSL392=392
 		  LibreSSL400=400
 		LibreSSL421 = 421
@@ -1675,17 +1513,11 @@ End
 		  Me.AddRow "OpenSSL 3.0 (LTS)"
 		  Me.RowTagAt(Me.LastAddedRowIndex) = SSLVersion.OpenSSL30
 		  
-		  Me.AddRow "OpenSSL 3.1"
-		  Me.RowTagAt(Me.LastAddedRowIndex) = SSLVersion.OpenSSL31
+		  Me.AddRow "OpenSSL 3.5 (LTS)"
+		  Me.RowTagAt(Me.LastAddedRowIndex) = SSLVersion.OpenSSL35
 		  
-		  Me.AddRow "OpenSSL 3.2"
-		  Me.RowTagAt(Me.LastAddedRowIndex) = SSLVersion.OpenSSL32
-		  
-		  Me.AddRow "OpenSSL 3.3"
-		  Me.RowTagAt(Me.LastAddedRowIndex) = SSLVersion.OpenSSL33
-		  
-		  Me.AddRow "OpenSSL 3.4"
-		  Me.RowTagAt(Me.LastAddedRowIndex) = SSLVersion.OpenSSL34
+		  Me.AddRow "OpenSSL 3.6"
+		  Me.RowTagAt(Me.LastAddedRowIndex) = SSLVersion.OpenSSL36
 		  
 		  
 		  Me.AddSeparator

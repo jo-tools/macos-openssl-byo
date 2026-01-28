@@ -18,14 +18,10 @@
 					FolderItem = Li4vb3BlbnNzbC8wLjkuOHpoL2xpYnNzbC4wLjkuOC5keWxpYg==
 					FolderItem = Li4vb3BlbnNzbC8zLjAvbGliY3J5cHRvLjMuZHlsaWI=
 					FolderItem = Li4vb3BlbnNzbC8zLjAvbGlic3NsLjMuZHlsaWI=
-					FolderItem = Li4vb3BlbnNzbC8zLjEvbGliY3J5cHRvLjMuMS5keWxpYg==
-					FolderItem = Li4vb3BlbnNzbC8zLjEvbGlic3NsLjMuMS5keWxpYg==
-					FolderItem = Li4vb3BlbnNzbC8zLjIvbGliY3J5cHRvLjMuMi5keWxpYg==
-					FolderItem = Li4vb3BlbnNzbC8zLjIvbGlic3NsLjMuMi5keWxpYg==
-					FolderItem = Li4vb3BlbnNzbC8zLjMvbGliY3J5cHRvLjMuMy5keWxpYg==
-					FolderItem = Li4vb3BlbnNzbC8zLjMvbGlic3NsLjMuMy5keWxpYg==
-					FolderItem = Li4vb3BlbnNzbC8zLjQvbGliY3J5cHRvLjMuNC5keWxpYg==
-					FolderItem = Li4vb3BlbnNzbC8zLjQvbGlic3NsLjMuNC5keWxpYg==
+					FolderItem = Li4vb3BlbnNzbC8zLjUvbGliY3J5cHRvLjMuNS5keWxpYg==
+					FolderItem = Li4vb3BlbnNzbC8zLjUvbGlic3NsLjMuNS5keWxpYg==
+					FolderItem = Li4vb3BlbnNzbC8zLjYvbGliY3J5cHRvLjMuNi5keWxpYg==
+					FolderItem = Li4vb3BlbnNzbC8zLjYvbGlic3NsLjMuNi5keWxpYg==
 				End
 				Begin CopyFilesBuildStep CopyLibreSSL
 					AppliesTo = 0
