@@ -519,7 +519,7 @@ Begin DesktopWindow Window1
       Transparent     =   False
       Underline       =   False
       Visible         =   True
-      Width           =   140
+      Width           =   160
    End
    Begin DesktopSeparator sepOpenSSLVersion
       Active          =   False
@@ -1672,7 +1672,7 @@ End
 		  Me.AddRow "OpenSSL 1.1"
 		  Me.RowTagAt(Me.LastAddedRowIndex) = SSLVersion.OpenSSL11
 		  
-		  Me.AddRow "OpenSSL 3.0"
+		  Me.AddRow "OpenSSL 3.0 (LTS)"
 		  Me.RowTagAt(Me.LastAddedRowIndex) = SSLVersion.OpenSSL30
 		  
 		  Me.AddRow "OpenSSL 3.1"

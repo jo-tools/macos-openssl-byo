@@ -7,8 +7,8 @@ This example is building [LibreSSL](https://www.libressl.org) as a Universal Bin
 It requires a macOS version and Xcode version that is capable of building these two targets.
 
 The included built ```.dylib```'s (Version 3.x) have been built using:
-- macOS 15.3
-- Xcode 16.2
+- macOS 26.2
+- Xcode 26.2
 
 ## Let's build LibreSSL
 There are subfolders for different LibreSSL versions.  
