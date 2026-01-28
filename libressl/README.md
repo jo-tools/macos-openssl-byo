@@ -6,25 +6,25 @@ This example is building [LibreSSL](https://www.libressl.org) as a Universal Bin
 ## Requirements
 It requires a macOS version and Xcode version that is capable of building these two targets.
 
-The included built ```.dylib```'s (Version 3.x) have been built using:
-- macOS 15.3
-- Xcode 16.2
+The included built ```.dylib```'s (Version 4.x) have been built using:
+- macOS 26.2
+- Xcode 26.2
 
 ## Let's build LibreSSL
 There are subfolders for different LibreSSL versions.  
 - Version [3.9.2](./3.9.2)  
 - Version [4.0.0](./4.0.0)  
+- Version [4.2.1](./4.2.1)  
 
 How to build LibreSSL using the provided Shell Scripts:
 1. Launch Terminal
 2. Change to the LibreSSL build folder:  
-   ```cd /path/to/where/you/have/saved/openssl-byo/libressl/4.0.0```
+   ```cd /path/to/where/you/have/saved/openssl-byo/libressl/4.2.1```
 3. Delete all files in the folder, except for ```build.sh```
 4. Edit the Build Script ```build.sh``` with a TextEditor of your choice
 5. Change the variable to the LibreSSL version you're going to build:  
-   - To build LibreSSL 4.0.x:  
-     ```DOWNLOAD_LIBRESSL_VERSION="4.0.0"```
-6. just in case: the build script needs to be executable:  
+   ```DOWNLOAD_LIBRESSL_VERSION="4.2.1"```
+6. Just in case: the build script needs to be executable:  
    ```chmod 755 ./build.sh```
 7. Run the Script build.sh:  
    ```./build.sh```

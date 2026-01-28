@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DOWNLOAD_OPENSSL_VERSION="3.3.3"
+DOWNLOAD_OPENSSL_VERSION="3.5.5"
 
 #Download
 echo ----------------------------------------------
@@ -31,8 +31,8 @@ echo ----------------------------------------------
 
 #Build x86_64
 cd openssl_x86_64
-#modify SHLIB_VERSION so that .dylibs will have "3.3" in filename
-sed -i -- 's/SHLIB_VERSION=3$/SHLIB_VERSION=3.3/g' ./VERSION.dat
+#modify SHLIB_VERSION so that .dylibs will have "3.5" in filename
+sed -i -- 's/SHLIB_VERSION=3$/SHLIB_VERSION=3.5/g' ./VERSION.dat
 #configure
 ./Configure darwin64-x86_64-cc -shared -mmacosx-version-min=10.14
 #edit paths
@@ -49,8 +49,8 @@ echo ----------------------------------------------
 
 #Build arm64
 cd openssl_arm64
-#modify SHLIB_VERSION so that .dylibs will have "3.3" in filename
-sed -i -- 's/SHLIB_VERSION=3$/SHLIB_VERSION=3.3/g' ./VERSION.dat
+#modify SHLIB_VERSION so that .dylibs will have "3.5" in filename
+sed -i -- 's/SHLIB_VERSION=3$/SHLIB_VERSION=3.5/g' ./VERSION.dat
 #configure
 ./Configure darwin64-arm64-cc -shared -mmacosx-version-min=10.14
 #edit paths
