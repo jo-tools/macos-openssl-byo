@@ -21,7 +21,7 @@ Using OpenSSL 3.0.x in a Xojo built application
 [Xojo](https://www.xojo.com/) is a rapid application development for Desktop, Web, Mobile & Raspberry Pi.  
 
 The Desktop application Xojo example project ```openssl-byo.xojo_project``` is using:
-- Xojo 2024r4.2
+- Xojo 2025r3.1
 - API 2
 
 ### How to use in your own Xojo project?
