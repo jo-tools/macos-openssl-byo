@@ -41,13 +41,51 @@ The Desktop application Xojo example project ```openssl-byo.xojo_project``` is u
 
 You then can use the bundled OpenSSL Library that you have just built in your own project.
 
-For example: Get the OpenSSL Version like this:
+<details>
+
+<summary>Example: libcrypto (Get the OpenSSL Version)</summary>
 
 ```
 Const cryptoLib = "@executable_path/../Frameworks/libcrypto.3.5.dylib"
 Declare Function OpenSSL_version Lib cryptoLib (i As Integer) As CString
 SomeLabel.Text = OpenSSL_version(0)
 ```
+
+</details>
+
+<details>
+
+<summary>Example: libssl (Create an SSL_CTX)</summary>
+
+```
+Const sslLib = "@executable_path/../Frameworks/libssl.3.5.dylib"
+Declare Function TLS_method Lib sslLib () As Ptr
+Declare Function SSL_CTX_new Lib sslLib (method As Ptr) As Ptr
+Declare Sub SSL_CTX_free Lib sslLib (ctx As Ptr)
+Var ctx As Ptr = SSL_CTX_new(TLS_method())
+'...
+SSL_CTX_free(ctx)
+```
+
+</details>
+
+<details>
+
+<summary>Why do both .dylibs have to be in the Frameworks folder?</summary>
+
+```libssl``` depends on ```libcrypto```. When you load ```libssl```, macOS loads ```libcrypto``` from the path that is stored in ```libssl``` *(its "install name")*.  
+By default, that is the install location of the build *(e.g. ```/usr/local/lib/...```, or a relative path)* - which doesn't exist on your users' Macs.
+
+That's why the build scripts set the install names to ```@loader_path/...```. Then ```libssl``` finds ```libcrypto``` right next to itself - in the Frameworks folder of your application.  
+You can check this with:
+```
+otool -L libssl.3.5.dylib
+```
+which should list ```@loader_path/libcrypto.3.5.dylib```.
+
+Note: Should ```libcrypto``` already be loaded *(e.g. because you've called a function of it before)*, macOS reuses it. A wrong install name in ```libssl``` will then go unnoticed - until a user's code calls ```libssl``` first.
+
+</details>
 
 ## About
 Juerg Otter is a long term user of Xojo and working for [CM Informatik AG](https://cmiag.ch/). Their Application [CMI LehrerOffice](https://cmi-bildung.ch/) is a Xojo Design Award Winner 2018. In his leisure time Juerg provides some [bits and pieces for Xojo Developers](https://www.jo-tools.ch/).

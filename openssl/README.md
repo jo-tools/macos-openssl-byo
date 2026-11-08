@@ -10,7 +10,8 @@ The included built ```.dylib```'s (Version 3.5 and 4.1) have been built using:
 - macOS 26.6.2
 - Xcode 27.2
 
-The build scripts set a deployment target of macOS 11.0 *(matching the minimum macOS version of the Xojo example project)*.
+The build scripts set a deployment target of macOS 11.0 *(matching the minimum macOS version of the Xojo example project)*.  
+Exception: The scripts for the legacy versions [0.9.8zh](./0.9.8zh) and [1.1](./1.1) use macOS 10.10.
 
 ## Let's build OpenSSL
 There are subfolders for different OpenSSL versions.  
