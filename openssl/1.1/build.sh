@@ -65,6 +65,17 @@ echo ----------------------------------------------
 lipo -create openssl_arm64/libcrypto.$FILENAME_VERSION_NUMBER.dylib openssl_x86_64/libcrypto.$FILENAME_VERSION_NUMBER.dylib -output libcrypto.$FILENAME_VERSION_NUMBER.dylib
 lipo -create openssl_arm64/libssl.$FILENAME_VERSION_NUMBER.dylib openssl_x86_64/libssl.$FILENAME_VERSION_NUMBER.dylib -output libssl.$FILENAME_VERSION_NUMBER.dylib
 
+echo ----------------------------------------------
+echo - Fix install names
+echo ----------------------------------------------
+
+#libssl should find libcrypto next to itself (e.g. in the app's Frameworks folder)
+OLD_LIBCRYPTO_ID=`otool -D ./libcrypto.$FILENAME_VERSION_NUMBER.dylib | tail -n 1`
+install_name_tool -id @loader_path/libcrypto.$FILENAME_VERSION_NUMBER.dylib ./libcrypto.$FILENAME_VERSION_NUMBER.dylib
+install_name_tool -id @loader_path/libssl.$FILENAME_VERSION_NUMBER.dylib ./libssl.$FILENAME_VERSION_NUMBER.dylib
+install_name_tool -change $OLD_LIBCRYPTO_ID @loader_path/libcrypto.$FILENAME_VERSION_NUMBER.dylib ./libssl.$FILENAME_VERSION_NUMBER.dylib
+otool -L ./libcrypto.$FILENAME_VERSION_NUMBER.dylib ./libssl.$FILENAME_VERSION_NUMBER.dylib
+
 #end
 echo ----------------------------------------------
 echo - Built: OpenSSL $DOWNLOAD_OPENSSL_VERSION

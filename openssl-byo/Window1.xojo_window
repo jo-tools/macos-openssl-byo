@@ -11,14 +11,14 @@ Begin DesktopWindow Window1
    HasMaximizeButton=   False
    HasMinimizeButton=   False
    HasTitleBar     =   True
-   Height          =   320
+   Height          =   360
    ImplicitInstance=   True
    MacProcID       =   0
    MaximumHeight   =   32000
    MaximumWidth    =   32000
    MenuBar         =   579858431
    MenuBarVisible  =   True
-   MinimumHeight   =   320
+   MinimumHeight   =   360
    MinimumWidth    =   550
    Resizeable      =   False
    Title           =   "OpenSSL - Bring your own .dylib"
@@ -303,7 +303,7 @@ Begin DesktopWindow Window1
       Visible         =   True
       Width           =   125
    End
-   Begin DesktopSeparator sepSHA1
+   Begin DesktopSeparator sepLibSSL
       Active          =   False
       AllowAutoDeactivate=   True
       AllowTabStop    =   True
@@ -351,20 +351,114 @@ Begin DesktopWindow Window1
       Multiline       =   True
       Scope           =   2
       Selectable      =   False
-      TabIndex        =   16
+      TabIndex        =   19
       TabPanelIndex   =   0
       TabStop         =   True
       Text            =   "This example project shows how you can build your own OpenSSL Library from Source as a Universal .dylib (arm64 and x86_64), include it in a Xojo project - and finally use it in your application."
       TextAlignment   =   0
       TextColor       =   &c00000000
       Tooltip         =   ""
-      Top             =   235
+      Top             =   275
       Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   510
    End
-   Begin DesktopLabel labSHA1TestTitle
+   Begin DesktopLabel labLibCryptoTestTitle
+      AllowAutoDeactivate=   True
+      Bold            =   False
+      Enabled         =   True
+      FontName        =   "System"
+      FontSize        =   0.0
+      FontUnit        =   0
+      Height          =   20
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   False
+      Left            =   20
+      LockBottom      =   False
+      LockedInPosition=   True
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      Multiline       =   False
+      Scope           =   2
+      Selectable      =   False
+      TabIndex        =   16
+      TabPanelIndex   =   0
+      TabStop         =   True
+      Text            =   "Lib Crypto Test:"
+      TextAlignment   =   0
+      TextColor       =   &c00000000
+      Tooltip         =   "Calculates the SHA1 hash of the version string with libcrypto (SHA1_Init, SHA1_Update, SHA1_Final) and compares it with Xojo's Crypto.Hash."
+      Top             =   230
+      Transparent     =   False
+      Underline       =   False
+      Visible         =   True
+      Width           =   125
+   End
+   Begin DesktopLabel labLibCryptoTest
+      AllowAutoDeactivate=   True
+      Bold            =   False
+      Enabled         =   True
+      FontName        =   "System"
+      FontSize        =   0.0
+      FontUnit        =   0
+      Height          =   20
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   False
+      Left            =   155
+      LockBottom      =   False
+      LockedInPosition=   True
+      LockLeft        =   True
+      LockRight       =   True
+      LockTop         =   True
+      Multiline       =   False
+      Scope           =   2
+      Selectable      =   False
+      TabIndex        =   17
+      TabPanelIndex   =   0
+      TabStop         =   True
+      Text            =   "..."
+      TextAlignment   =   0
+      TextColor       =   &c00000000
+      Tooltip         =   ""
+      Top             =   230
+      Transparent     =   False
+      Underline       =   False
+      Visible         =   True
+      Width           =   375
+   End
+   Begin DesktopSeparator sepLibCrypto
+      Active          =   False
+      AllowAutoDeactivate=   True
+      AllowTabStop    =   True
+      Enabled         =   True
+      Height          =   4
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Left            =   0
+      LockBottom      =   False
+      LockedInPosition=   True
+      LockLeft        =   True
+      LockRight       =   True
+      LockTop         =   True
+      PanelIndex      =   0
+      Scope           =   2
+      TabIndex        =   15
+      TabPanelIndex   =   0
+      Tooltip         =   ""
+      Top             =   220
+      Transparent     =   True
+      Visible         =   True
+      Width           =   550
+      _mIndex         =   0
+      _mInitialParent =   ""
+      _mName          =   ""
+      _mPanelIndex    =   0
+   End
+   Begin DesktopLabel labLibSSLTestTitle
       AllowAutoDeactivate=   True
       Bold            =   False
       Enabled         =   True
@@ -387,17 +481,17 @@ Begin DesktopWindow Window1
       TabIndex        =   13
       TabPanelIndex   =   0
       TabStop         =   True
-      Text            =   "SHA1 Test:"
+      Text            =   "Lib SSL Test:"
       TextAlignment   =   0
       TextColor       =   &c00000000
-      Tooltip         =   ""
+      Tooltip         =   "Loads only libssl (it has to find libcrypto next to itself), then creates an SSL_CTX and an SSL session and shows the first cipher."
       Top             =   190
       Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   125
    End
-   Begin DesktopLabel labSHA1Test
+   Begin DesktopLabel labLibSSLTest
       AllowAutoDeactivate=   True
       Bold            =   False
       Enabled         =   True
@@ -446,10 +540,10 @@ Begin DesktopWindow Window1
       LockTop         =   True
       PanelIndex      =   0
       Scope           =   2
-      TabIndex        =   15
+      TabIndex        =   18
       TabPanelIndex   =   0
       Tooltip         =   ""
-      Top             =   220
+      Top             =   260
       Transparent     =   True
       Visible         =   True
       Width           =   550
@@ -555,7 +649,7 @@ End
 #tag WindowCode
 	#tag Event
 		Sub Opening()
-		  Self.Examples(SSLVersion.OpenSSL30)
+		  Self.Examples(SSLVersion.OpenSSL35)
 		  
 		End Sub
 	#tag EndEvent
@@ -578,6 +672,31 @@ End
 
 	#tag Method, Flags = &h21
 		Private Sub Examples(selectedSSLVersion As SSLVersion)
+		  //Lib SSL Test first: libssl depends on libcrypto. Once libcrypto is loaded
+		  //(Version, Lib Crypto Test), dyld would reuse it - and hide a wrong install name
+		  Select Case selectedSSLVersion
+		    
+		  Case SSLVersion.OpenSSL098
+		    Me.Examples_0_9_8_LibSSL()
+		    
+		  Case SSLVersion.OpenSSL11
+		    Me.Examples_1_1_LibSSL()
+		    
+		  Case SSLVersion.OpenSSL35
+		    Me.Examples_3_5_LibSSL()
+		    
+		  Case SSLVersion.OpenSSL41
+		    Me.Examples_4_1_LibSSL()
+		    
+		    
+		  Case SSLVersion.LibreSSL42
+		    Me.Examples_LibreSSL_4_2_LibSSL()
+		    
+		  Case SSLVersion.LibreSSL44
+		    Me.Examples_LibreSSL_4_4_LibSSL()
+		    
+		  End Select
+		  
 		  Me.Examples_Version(selectedSSLVersion)
 		  
 		  Select Case selectedSSLVersion
@@ -588,26 +707,86 @@ End
 		  Case SSLVersion.OpenSSL11
 		    Me.Examples_1_1_SHA1()
 		    
-		  Case SSLVersion.OpenSSL30
-		    Me.Examples_3_0_SHA1()
-		    
 		  Case SSLVersion.OpenSSL35
 		    Me.Examples_3_5_SHA1()
 		    
-		  Case SSLVersion.OpenSSL36
-		    Me.Examples_3_6_SHA1()
+		  Case SSLVersion.OpenSSL41
+		    Me.Examples_4_1_SHA1()
 		    
 		    
-		  Case SSLVersion.LibreSSL392
-		    Me.Examples_3_9_2_SHA1()
+		  Case SSLVersion.LibreSSL42
+		    Me.Examples_LibreSSL_4_2_SHA1()
 		    
-		  Case SSLVersion.LibreSSL400
-		    Me.Examples_4_0_0_SHA1()
-		    
-		  Case SSLVersion.LibreSSL421
-		    Me.Examples_4_2_1_SHA1()
+		  Case SSLVersion.LibreSSL44
+		    Me.Examples_LibreSSL_4_4_SHA1()
 		    
 		  End Select
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub Examples_0_9_8_LibSSL()
+		  Dim sError As String
+		  
+		  #If TargetMacOS Then
+		    Try
+		      Const constLibSSL = "@executable_path/../Frameworks/libssl.0.9.8.dylib"
+		      
+		      //Note: libssl depends on libcrypto. dyld needs to find libcrypto through the
+		      //install name stored in libssl - which is why the build scripts set it to @loader_path
+		      Declare Function SSL_library_init Lib constLibSSL () As Int32
+		      Declare Function SSLv23_method Lib constLibSSL () As Ptr
+		      Declare Function SSL_CTX_new Lib constLibSSL (method As Ptr) As Ptr
+		      Declare Sub SSL_CTX_free Lib constLibSSL (ctx As Ptr)
+		      Declare Function SSL_new Lib constLibSSL (ctx As Ptr) As Ptr
+		      Declare Sub SSL_free Lib constLibSSL (ssl As Ptr)
+		      Declare Function SSL_get_cipher_list Lib constLibSSL (ssl As Ptr, n As Int32) As CString
+		      
+		      Call SSL_library_init()
+		      Dim pCtx As Ptr = SSL_CTX_new(SSLv23_method())
+		      If (pCtx = Nil) Then
+		        Dim err As New RuntimeException
+		        err.Message = "SSL_CTX_new failed"
+		        Raise err
+		      End If
+		      
+		      Dim pSSL As Ptr = SSL_new(pCtx)
+		      If (pSSL = Nil) Then
+		        SSL_CTX_free(pCtx)
+		        Dim err As New RuntimeException
+		        err.Message = "SSL_new failed"
+		        Raise err
+		      End If
+		      
+		      //Count the available Ciphers (SSL_get_cipher_list returns NULL after the last one)
+		      Dim sFirstCipher As String = SSL_get_cipher_list(pSSL, 0)
+		      Dim iCiphers As Integer = 0
+		      While (iCiphers < 1000) And (SSL_get_cipher_list(pSSL, iCiphers) <> "")
+		        iCiphers = iCiphers + 1
+		      Wend
+		      
+		      SSL_free(pSSL)
+		      SSL_CTX_free(pCtx)
+		      
+		      labLibSSLTest.Text = iCiphers.ToString + " Ciphers | 1st: " + sFirstCipher
+		      labLibSSLTest.TextColor = &c00BB00
+		      labLibSSLTest.Tooltip = "SSL_library_init, SSL_CTX_new(SSLv23_method()), SSL_new, SSL_get_cipher_list"
+		      
+		    Catch e As FunctionNotFoundException
+		      sError = e.Message
+		    Catch e As RuntimeException
+		      sError = e.Message
+		    End Try
+		    
+		  #Else
+		    sError = "This example is only for TargetMacOS"
+		  #EndIf
+		  
+		  If (sError <> "") Then
+		    labLibSSLTest.Text = sError
+		    labLibSSLTest.TextColor = &cFF0000
+		    labLibSSLTest.Tooltip = sError
+		  End If
 		End Sub
 	#tag EndMethod
 
@@ -621,7 +800,7 @@ End
 		      
 		      Declare Function SSLeay_version Lib constLibCrypto (i As Integer) As CString
 		      Dim sData As String = ConvertEncoding(SSLeay_version(0), Encodings.UTF8)
-		      labSHA1Test.Tooltip = "SHA1 of '" + sData + "'"
+		      labLibCryptoTest.Tooltip = "SHA1 of '" + sData + "'"
 		      
 		      //SHA1 Hash
 		      Declare Function SHA1_Init Lib constLibCrypto (c As Ptr) As Integer
@@ -654,8 +833,8 @@ End
 		      
 		      Dim sResultBinary As String = mbSHA1Result
 		      Dim sResult As String = Self.BinaryToHexString(sResultBinary)
-		      labSHA1Test.Text = sResult
-		      labSHA1Test.TextColor = &c00BB00
+		      labLibCryptoTest.Text = sResult
+		      labLibCryptoTest.TextColor = &c00BB00
 		      
 		      //Double check with Xojo's Crypto
 		      Dim encryptedValue As String = Crypto.Hash(sData, Crypto.HashAlgorithms.SHA1)
@@ -676,8 +855,73 @@ End
 		  #EndIf
 		  
 		  If (sError <> "") Then
-		    labSHA1Test.Text = sError
-		    labSHA1Test.TextColor = &cFF0000
+		    labLibCryptoTest.Text = sError
+		    labLibCryptoTest.TextColor = &cFF0000
+		    labLibCryptoTest.Tooltip = sError
+		  End If
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub Examples_1_1_LibSSL()
+		  Dim sError As String
+		  
+		  #If TargetMacOS Then
+		    Try
+		      Const constLibSSL = "@executable_path/../Frameworks/libssl.1.1.dylib"
+		      
+		      //Note: libssl depends on libcrypto. dyld needs to find libcrypto through the
+		      //install name stored in libssl - which is why the build scripts set it to @loader_path
+		      Declare Function TLS_method Lib constLibSSL () As Ptr
+		      Declare Function SSL_CTX_new Lib constLibSSL (method As Ptr) As Ptr
+		      Declare Sub SSL_CTX_free Lib constLibSSL (ctx As Ptr)
+		      Declare Function SSL_new Lib constLibSSL (ctx As Ptr) As Ptr
+		      Declare Sub SSL_free Lib constLibSSL (ssl As Ptr)
+		      Declare Function SSL_get_cipher_list Lib constLibSSL (ssl As Ptr, n As Int32) As CString
+		      
+		      Dim pCtx As Ptr = SSL_CTX_new(TLS_method())
+		      If (pCtx = Nil) Then
+		        Dim err As New RuntimeException
+		        err.Message = "SSL_CTX_new failed"
+		        Raise err
+		      End If
+		      
+		      Dim pSSL As Ptr = SSL_new(pCtx)
+		      If (pSSL = Nil) Then
+		        SSL_CTX_free(pCtx)
+		        Dim err As New RuntimeException
+		        err.Message = "SSL_new failed"
+		        Raise err
+		      End If
+		      
+		      //Count the available Ciphers (SSL_get_cipher_list returns NULL after the last one)
+		      Dim sFirstCipher As String = SSL_get_cipher_list(pSSL, 0)
+		      Dim iCiphers As Integer = 0
+		      While (iCiphers < 1000) And (SSL_get_cipher_list(pSSL, iCiphers) <> "")
+		        iCiphers = iCiphers + 1
+		      Wend
+		      
+		      SSL_free(pSSL)
+		      SSL_CTX_free(pCtx)
+		      
+		      labLibSSLTest.Text = iCiphers.ToString + " Ciphers | 1st: " + sFirstCipher
+		      labLibSSLTest.TextColor = &c00BB00
+		      labLibSSLTest.Tooltip = "SSL_CTX_new(TLS_method()), SSL_new, SSL_get_cipher_list"
+		      
+		    Catch e As FunctionNotFoundException
+		      sError = e.Message
+		    Catch e As RuntimeException
+		      sError = e.Message
+		    End Try
+		    
+		  #Else
+		    sError = "This example is only for TargetMacOS"
+		  #EndIf
+		  
+		  If (sError <> "") Then
+		    labLibSSLTest.Text = sError
+		    labLibSSLTest.TextColor = &cFF0000
+		    labLibSSLTest.Tooltip = sError
 		  End If
 		End Sub
 	#tag EndMethod
@@ -692,7 +936,7 @@ End
 		      
 		      Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
 		      Dim sData As String = ConvertEncoding(OpenSSL_version(0), Encodings.UTF8)
-		      labSHA1Test.Tooltip = "SHA1 of '" + sData + "'"
+		      labLibCryptoTest.Tooltip = "SHA1 of '" + sData + "'"
 		      
 		      //SHA1 Hash
 		      Declare Function SHA1_Init Lib constLibCrypto (c As Ptr) As Integer
@@ -725,8 +969,8 @@ End
 		      
 		      Dim sResultBinary As String = mbSHA1Result
 		      Dim sResult As String = Self.BinaryToHexString(sResultBinary)
-		      labSHA1Test.Text = sResult
-		      labSHA1Test.TextColor = &c00BB00
+		      labLibCryptoTest.Text = sResult
+		      labLibCryptoTest.TextColor = &c00BB00
 		      
 		      //Double check with Xojo's Crypto
 		      Dim encryptedValue As String = Crypto.Hash(sData, Crypto.HashAlgorithms.SHA1)
@@ -747,65 +991,58 @@ End
 		  #EndIf
 		  
 		  If (sError <> "") Then
-		    labSHA1Test.Text = sError
-		    labSHA1Test.TextColor = &cFF0000
+		    labLibCryptoTest.Text = sError
+		    labLibCryptoTest.TextColor = &cFF0000
+		    labLibCryptoTest.Tooltip = sError
 		  End If
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Sub Examples_3_0_SHA1()
+		Private Sub Examples_3_5_LibSSL()
 		  Dim sError As String
 		  
 		  #If TargetMacOS Then
 		    Try
-		      Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.3.dylib"
+		      Const constLibSSL = "@executable_path/../Frameworks/libssl.3.5.dylib"
 		      
-		      Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
-		      Dim sData As String = ConvertEncoding(OpenSSL_version(0), Encodings.UTF8)
-		      labSHA1Test.Tooltip = "SHA1 of '" + sData + "'"
+		      //Note: libssl depends on libcrypto. dyld needs to find libcrypto through the
+		      //install name stored in libssl - which is why the build scripts set it to @loader_path
+		      Declare Function TLS_method Lib constLibSSL () As Ptr
+		      Declare Function SSL_CTX_new Lib constLibSSL (method As Ptr) As Ptr
+		      Declare Sub SSL_CTX_free Lib constLibSSL (ctx As Ptr)
+		      Declare Function SSL_new Lib constLibSSL (ctx As Ptr) As Ptr
+		      Declare Sub SSL_free Lib constLibSSL (ssl As Ptr)
+		      Declare Function SSL_get_cipher_list Lib constLibSSL (ssl As Ptr, n As Int32) As CString
 		      
-		      //SHA1 Hash
-		      Declare Function SHA1_Init Lib constLibCrypto (c As Ptr) As Integer
-		      Declare Function SHA1_Update Lib constLibCrypto (c As Ptr, data As CString, mlen As Integer) As Integer
-		      Declare Function SHA1_Final Lib constLibCrypto (md As Ptr, c As Ptr) As Integer
-		      
-		      Dim mbSHAContext As New MemoryBlock(256)
-		      
-		      Dim iRes As Integer = SHA1_Init(mbSHAContext)
-		      If (iRes <> 1) Then
+		      Dim pCtx As Ptr = SSL_CTX_new(TLS_method())
+		      If (pCtx = Nil) Then
 		        Dim err As New RuntimeException
-		        err.Message = "SHA1_Init failed"
+		        err.Message = "SSL_CTX_new failed"
 		        Raise err
 		      End If
 		      
-		      iRes = SHA1_Update(mbSHAContext, sData, sData.Bytes)
-		      If (iRes <> 1) Then
+		      Dim pSSL As Ptr = SSL_new(pCtx)
+		      If (pSSL = Nil) Then
+		        SSL_CTX_free(pCtx)
 		        Dim err As New RuntimeException
-		        err.Message = "SHA1_Update failed"
+		        err.Message = "SSL_new failed"
 		        Raise err
 		      End If
 		      
-		      Dim mbSHA1Result As New MemoryBlock(20) 'SHA1 Length
-		      iRes = SHA1_Final(mbSHA1Result, mbSHAContext)
-		      If (iRes <> 1) Then
-		        Dim err As New RuntimeException
-		        err.Message = "SHA1_Final failed"
-		        Raise err
-		      End If
+		      //Count the available Ciphers (SSL_get_cipher_list returns NULL after the last one)
+		      Dim sFirstCipher As String = SSL_get_cipher_list(pSSL, 0)
+		      Dim iCiphers As Integer = 0
+		      While (iCiphers < 1000) And (SSL_get_cipher_list(pSSL, iCiphers) <> "")
+		        iCiphers = iCiphers + 1
+		      Wend
 		      
-		      Dim sResultBinary As String = mbSHA1Result
-		      Dim sResult As String = Self.BinaryToHexString(sResultBinary)
-		      labSHA1Test.Text = sResult
-		      labSHA1Test.TextColor = &c00BB00
+		      SSL_free(pSSL)
+		      SSL_CTX_free(pCtx)
 		      
-		      //Double check with Xojo's Crypto
-		      Dim encryptedValue As String = Crypto.Hash(sData, Crypto.HashAlgorithms.SHA1)
-		      Dim sResult2 As String = Self.BinaryToHexString(encryptedValue)
-		      If (sResult <> sResult2) Then
-		        sError = "SHA1 of OpenSSL and Xojo are different"
-		      End If
-		      
+		      labLibSSLTest.Text = iCiphers.ToString + " Ciphers | 1st: " + sFirstCipher
+		      labLibSSLTest.TextColor = &c00BB00
+		      labLibSSLTest.Tooltip = "SSL_CTX_new(TLS_method()), SSL_new, SSL_get_cipher_list"
 		      
 		    Catch e As FunctionNotFoundException
 		      sError = e.Message
@@ -818,8 +1055,9 @@ End
 		  #EndIf
 		  
 		  If (sError <> "") Then
-		    labSHA1Test.Text = sError
-		    labSHA1Test.TextColor = &cFF0000
+		    labLibSSLTest.Text = sError
+		    labLibSSLTest.TextColor = &cFF0000
+		    labLibSSLTest.Tooltip = sError
 		  End If
 		End Sub
 	#tag EndMethod
@@ -834,7 +1072,7 @@ End
 		      
 		      Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
 		      Dim sData As String = ConvertEncoding(OpenSSL_version(0), Encodings.UTF8)
-		      labSHA1Test.Tooltip = "SHA1 of '" + sData + "'"
+		      labLibCryptoTest.Tooltip = "SHA1 of '" + sData + "'"
 		      
 		      //SHA1 Hash
 		      Declare Function SHA1_Init Lib constLibCrypto (c As Ptr) As Integer
@@ -867,8 +1105,8 @@ End
 		      
 		      Dim sResultBinary As String = mbSHA1Result
 		      Dim sResult As String = Self.BinaryToHexString(sResultBinary)
-		      labSHA1Test.Text = sResult
-		      labSHA1Test.TextColor = &c00BB00
+		      labLibCryptoTest.Text = sResult
+		      labLibCryptoTest.TextColor = &c00BB00
 		      
 		      //Double check with Xojo's Crypto
 		      Dim encryptedValue As String = Crypto.Hash(sData, Crypto.HashAlgorithms.SHA1)
@@ -889,65 +1127,58 @@ End
 		  #EndIf
 		  
 		  If (sError <> "") Then
-		    labSHA1Test.Text = sError
-		    labSHA1Test.TextColor = &cFF0000
+		    labLibCryptoTest.Text = sError
+		    labLibCryptoTest.TextColor = &cFF0000
+		    labLibCryptoTest.Tooltip = sError
 		  End If
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Sub Examples_3_6_SHA1()
+		Private Sub Examples_4_1_LibSSL()
 		  Dim sError As String
 		  
 		  #If TargetMacOS Then
 		    Try
-		      Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.3.6.dylib"
+		      Const constLibSSL = "@executable_path/../Frameworks/libssl.4.1.dylib"
 		      
-		      Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
-		      Dim sData As String = ConvertEncoding(OpenSSL_version(0), Encodings.UTF8)
-		      labSHA1Test.Tooltip = "SHA1 of '" + sData + "'"
+		      //Note: libssl depends on libcrypto. dyld needs to find libcrypto through the
+		      //install name stored in libssl - which is why the build scripts set it to @loader_path
+		      Declare Function TLS_method Lib constLibSSL () As Ptr
+		      Declare Function SSL_CTX_new Lib constLibSSL (method As Ptr) As Ptr
+		      Declare Sub SSL_CTX_free Lib constLibSSL (ctx As Ptr)
+		      Declare Function SSL_new Lib constLibSSL (ctx As Ptr) As Ptr
+		      Declare Sub SSL_free Lib constLibSSL (ssl As Ptr)
+		      Declare Function SSL_get_cipher_list Lib constLibSSL (ssl As Ptr, n As Int32) As CString
 		      
-		      //SHA1 Hash
-		      Declare Function SHA1_Init Lib constLibCrypto (c As Ptr) As Integer
-		      Declare Function SHA1_Update Lib constLibCrypto (c As Ptr, data As CString, mlen As Integer) As Integer
-		      Declare Function SHA1_Final Lib constLibCrypto (md As Ptr, c As Ptr) As Integer
-		      
-		      Dim mbSHAContext As New MemoryBlock(256)
-		      
-		      Dim iRes As Integer = SHA1_Init(mbSHAContext)
-		      If (iRes <> 1) Then
+		      Dim pCtx As Ptr = SSL_CTX_new(TLS_method())
+		      If (pCtx = Nil) Then
 		        Dim err As New RuntimeException
-		        err.Message = "SHA1_Init failed"
+		        err.Message = "SSL_CTX_new failed"
 		        Raise err
 		      End If
 		      
-		      iRes = SHA1_Update(mbSHAContext, sData, sData.Bytes)
-		      If (iRes <> 1) Then
+		      Dim pSSL As Ptr = SSL_new(pCtx)
+		      If (pSSL = Nil) Then
+		        SSL_CTX_free(pCtx)
 		        Dim err As New RuntimeException
-		        err.Message = "SHA1_Update failed"
+		        err.Message = "SSL_new failed"
 		        Raise err
 		      End If
 		      
-		      Dim mbSHA1Result As New MemoryBlock(20) 'SHA1 Length
-		      iRes = SHA1_Final(mbSHA1Result, mbSHAContext)
-		      If (iRes <> 1) Then
-		        Dim err As New RuntimeException
-		        err.Message = "SHA1_Final failed"
-		        Raise err
-		      End If
+		      //Count the available Ciphers (SSL_get_cipher_list returns NULL after the last one)
+		      Dim sFirstCipher As String = SSL_get_cipher_list(pSSL, 0)
+		      Dim iCiphers As Integer = 0
+		      While (iCiphers < 1000) And (SSL_get_cipher_list(pSSL, iCiphers) <> "")
+		        iCiphers = iCiphers + 1
+		      Wend
 		      
-		      Dim sResultBinary As String = mbSHA1Result
-		      Dim sResult As String = Self.BinaryToHexString(sResultBinary)
-		      labSHA1Test.Text = sResult
-		      labSHA1Test.TextColor = &c00BB00
+		      SSL_free(pSSL)
+		      SSL_CTX_free(pCtx)
 		      
-		      //Double check with Xojo's Crypto
-		      Dim encryptedValue As String = Crypto.Hash(sData, Crypto.HashAlgorithms.SHA1)
-		      Dim sResult2 As String = Self.BinaryToHexString(encryptedValue)
-		      If (sResult <> sResult2) Then
-		        sError = "SHA1 of OpenSSL and Xojo are different"
-		      End If
-		      
+		      labLibSSLTest.Text = iCiphers.ToString + " Ciphers | 1st: " + sFirstCipher
+		      labLibSSLTest.TextColor = &c00BB00
+		      labLibSSLTest.Tooltip = "SSL_CTX_new(TLS_method()), SSL_new, SSL_get_cipher_list"
 		      
 		    Catch e As FunctionNotFoundException
 		      sError = e.Message
@@ -960,23 +1191,24 @@ End
 		  #EndIf
 		  
 		  If (sError <> "") Then
-		    labSHA1Test.Text = sError
-		    labSHA1Test.TextColor = &cFF0000
+		    labLibSSLTest.Text = sError
+		    labLibSSLTest.TextColor = &cFF0000
+		    labLibSSLTest.Tooltip = sError
 		  End If
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Sub Examples_3_9_2_SHA1()
+		Private Sub Examples_4_1_SHA1()
 		  Dim sError As String
 		  
 		  #If TargetMacOS Then
 		    Try
-		      Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.3.9.2.dylib"
+		      Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.4.1.dylib"
 		      
 		      Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
 		      Dim sData As String = ConvertEncoding(OpenSSL_version(0), Encodings.UTF8)
-		      labSHA1Test.Tooltip = "SHA1 of '" + sData + "'"
+		      labLibCryptoTest.Tooltip = "SHA1 of '" + sData + "'"
 		      
 		      //SHA1 Hash
 		      Declare Function SHA1_Init Lib constLibCrypto (c As Ptr) As Integer
@@ -1009,8 +1241,8 @@ End
 		      
 		      Dim sResultBinary As String = mbSHA1Result
 		      Dim sResult As String = Self.BinaryToHexString(sResultBinary)
-		      labSHA1Test.Text = sResult
-		      labSHA1Test.TextColor = &c00BB00
+		      labLibCryptoTest.Text = sResult
+		      labLibCryptoTest.TextColor = &c00BB00
 		      
 		      //Double check with Xojo's Crypto
 		      Dim encryptedValue As String = Crypto.Hash(sData, Crypto.HashAlgorithms.SHA1)
@@ -1031,65 +1263,58 @@ End
 		  #EndIf
 		  
 		  If (sError <> "") Then
-		    labSHA1Test.Text = sError
-		    labSHA1Test.TextColor = &cFF0000
+		    labLibCryptoTest.Text = sError
+		    labLibCryptoTest.TextColor = &cFF0000
+		    labLibCryptoTest.Tooltip = sError
 		  End If
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Sub Examples_4_0_0_SHA1()
+		Private Sub Examples_LibreSSL_4_2_LibSSL()
 		  Dim sError As String
 		  
 		  #If TargetMacOS Then
 		    Try
-		      Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.4.0.0.dylib"
+		      Const constLibSSL = "@executable_path/../Frameworks/libssl.4.2.dylib"
 		      
-		      Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
-		      Dim sData As String = ConvertEncoding(OpenSSL_version(0), Encodings.UTF8)
-		      labSHA1Test.Tooltip = "SHA1 of '" + sData + "'"
+		      //Note: libssl depends on libcrypto. dyld needs to find libcrypto through the
+		      //install name stored in libssl - which is why the build scripts set it to @loader_path
+		      Declare Function TLS_method Lib constLibSSL () As Ptr
+		      Declare Function SSL_CTX_new Lib constLibSSL (method As Ptr) As Ptr
+		      Declare Sub SSL_CTX_free Lib constLibSSL (ctx As Ptr)
+		      Declare Function SSL_new Lib constLibSSL (ctx As Ptr) As Ptr
+		      Declare Sub SSL_free Lib constLibSSL (ssl As Ptr)
+		      Declare Function SSL_get_cipher_list Lib constLibSSL (ssl As Ptr, n As Int32) As CString
 		      
-		      //SHA1 Hash
-		      Declare Function SHA1_Init Lib constLibCrypto (c As Ptr) As Integer
-		      Declare Function SHA1_Update Lib constLibCrypto (c As Ptr, data As CString, mlen As Integer) As Integer
-		      Declare Function SHA1_Final Lib constLibCrypto (md As Ptr, c As Ptr) As Integer
-		      
-		      Dim mbSHAContext As New MemoryBlock(256)
-		      
-		      Dim iRes As Integer = SHA1_Init(mbSHAContext)
-		      If (iRes <> 1) Then
+		      Dim pCtx As Ptr = SSL_CTX_new(TLS_method())
+		      If (pCtx = Nil) Then
 		        Dim err As New RuntimeException
-		        err.Message = "SHA1_Init failed"
+		        err.Message = "SSL_CTX_new failed"
 		        Raise err
 		      End If
 		      
-		      iRes = SHA1_Update(mbSHAContext, sData, sData.Bytes)
-		      If (iRes <> 1) Then
+		      Dim pSSL As Ptr = SSL_new(pCtx)
+		      If (pSSL = Nil) Then
+		        SSL_CTX_free(pCtx)
 		        Dim err As New RuntimeException
-		        err.Message = "SHA1_Update failed"
+		        err.Message = "SSL_new failed"
 		        Raise err
 		      End If
 		      
-		      Dim mbSHA1Result As New MemoryBlock(20) 'SHA1 Length
-		      iRes = SHA1_Final(mbSHA1Result, mbSHAContext)
-		      If (iRes <> 1) Then
-		        Dim err As New RuntimeException
-		        err.Message = "SHA1_Final failed"
-		        Raise err
-		      End If
+		      //Count the available Ciphers (SSL_get_cipher_list returns NULL after the last one)
+		      Dim sFirstCipher As String = SSL_get_cipher_list(pSSL, 0)
+		      Dim iCiphers As Integer = 0
+		      While (iCiphers < 1000) And (SSL_get_cipher_list(pSSL, iCiphers) <> "")
+		        iCiphers = iCiphers + 1
+		      Wend
 		      
-		      Dim sResultBinary As String = mbSHA1Result
-		      Dim sResult As String = Self.BinaryToHexString(sResultBinary)
-		      labSHA1Test.Text = sResult
-		      labSHA1Test.TextColor = &c00BB00
+		      SSL_free(pSSL)
+		      SSL_CTX_free(pCtx)
 		      
-		      //Double check with Xojo's Crypto
-		      Dim encryptedValue As String = Crypto.Hash(sData, Crypto.HashAlgorithms.SHA1)
-		      Dim sResult2 As String = Self.BinaryToHexString(encryptedValue)
-		      If (sResult <> sResult2) Then
-		        sError = "SHA1 of OpenSSL and Xojo are different"
-		      End If
-		      
+		      labLibSSLTest.Text = iCiphers.ToString + " Ciphers | 1st: " + sFirstCipher
+		      labLibSSLTest.TextColor = &c00BB00
+		      labLibSSLTest.Tooltip = "SSL_CTX_new(TLS_method()), SSL_new, SSL_get_cipher_list"
 		      
 		    Catch e As FunctionNotFoundException
 		      sError = e.Message
@@ -1102,23 +1327,24 @@ End
 		  #EndIf
 		  
 		  If (sError <> "") Then
-		    labSHA1Test.Text = sError
-		    labSHA1Test.TextColor = &cFF0000
+		    labLibSSLTest.Text = sError
+		    labLibSSLTest.TextColor = &cFF0000
+		    labLibSSLTest.Tooltip = sError
 		  End If
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Sub Examples_4_2_1_SHA1()
+		Private Sub Examples_LibreSSL_4_2_SHA1()
 		  Dim sError As String
 		  
 		  #If TargetMacOS Then
 		    Try
-		      Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.4.2.1.dylib"
+		      Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.4.2.dylib"
 		      
 		      Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
 		      Dim sData As String = ConvertEncoding(OpenSSL_version(0), Encodings.UTF8)
-		      labSHA1Test.Tooltip = "SHA1 of '" + sData + "'"
+		      labLibCryptoTest.Tooltip = "SHA1 of '" + sData + "'"
 		      
 		      //SHA1 Hash
 		      Declare Function SHA1_Init Lib constLibCrypto (c As Ptr) As Integer
@@ -1151,8 +1377,8 @@ End
 		      
 		      Dim sResultBinary As String = mbSHA1Result
 		      Dim sResult As String = Self.BinaryToHexString(sResultBinary)
-		      labSHA1Test.Text = sResult
-		      labSHA1Test.TextColor = &c00BB00
+		      labLibCryptoTest.Text = sResult
+		      labLibCryptoTest.TextColor = &c00BB00
 		      
 		      //Double check with Xojo's Crypto
 		      Dim encryptedValue As String = Crypto.Hash(sData, Crypto.HashAlgorithms.SHA1)
@@ -1173,8 +1399,145 @@ End
 		  #EndIf
 		  
 		  If (sError <> "") Then
-		    labSHA1Test.Text = sError
-		    labSHA1Test.TextColor = &cFF0000
+		    labLibCryptoTest.Text = sError
+		    labLibCryptoTest.TextColor = &cFF0000
+		    labLibCryptoTest.Tooltip = sError
+		  End If
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub Examples_LibreSSL_4_4_LibSSL()
+		  Dim sError As String
+		  
+		  #If TargetMacOS Then
+		    Try
+		      Const constLibSSL = "@executable_path/../Frameworks/libssl.4.4.dylib"
+		      
+		      //Note: libssl depends on libcrypto. dyld needs to find libcrypto through the
+		      //install name stored in libssl - which is why the build scripts set it to @loader_path
+		      Declare Function TLS_method Lib constLibSSL () As Ptr
+		      Declare Function SSL_CTX_new Lib constLibSSL (method As Ptr) As Ptr
+		      Declare Sub SSL_CTX_free Lib constLibSSL (ctx As Ptr)
+		      Declare Function SSL_new Lib constLibSSL (ctx As Ptr) As Ptr
+		      Declare Sub SSL_free Lib constLibSSL (ssl As Ptr)
+		      Declare Function SSL_get_cipher_list Lib constLibSSL (ssl As Ptr, n As Int32) As CString
+		      
+		      Dim pCtx As Ptr = SSL_CTX_new(TLS_method())
+		      If (pCtx = Nil) Then
+		        Dim err As New RuntimeException
+		        err.Message = "SSL_CTX_new failed"
+		        Raise err
+		      End If
+		      
+		      Dim pSSL As Ptr = SSL_new(pCtx)
+		      If (pSSL = Nil) Then
+		        SSL_CTX_free(pCtx)
+		        Dim err As New RuntimeException
+		        err.Message = "SSL_new failed"
+		        Raise err
+		      End If
+		      
+		      //Count the available Ciphers (SSL_get_cipher_list returns NULL after the last one)
+		      Dim sFirstCipher As String = SSL_get_cipher_list(pSSL, 0)
+		      Dim iCiphers As Integer = 0
+		      While (iCiphers < 1000) And (SSL_get_cipher_list(pSSL, iCiphers) <> "")
+		        iCiphers = iCiphers + 1
+		      Wend
+		      
+		      SSL_free(pSSL)
+		      SSL_CTX_free(pCtx)
+		      
+		      labLibSSLTest.Text = iCiphers.ToString + " Ciphers | 1st: " + sFirstCipher
+		      labLibSSLTest.TextColor = &c00BB00
+		      labLibSSLTest.Tooltip = "SSL_CTX_new(TLS_method()), SSL_new, SSL_get_cipher_list"
+		      
+		    Catch e As FunctionNotFoundException
+		      sError = e.Message
+		    Catch e As RuntimeException
+		      sError = e.Message
+		    End Try
+		    
+		  #Else
+		    sError = "This example is only for TargetMacOS"
+		  #EndIf
+		  
+		  If (sError <> "") Then
+		    labLibSSLTest.Text = sError
+		    labLibSSLTest.TextColor = &cFF0000
+		    labLibSSLTest.Tooltip = sError
+		  End If
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub Examples_LibreSSL_4_4_SHA1()
+		  Dim sError As String
+		  
+		  #If TargetMacOS Then
+		    Try
+		      Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.4.4.dylib"
+		      
+		      Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
+		      Dim sData As String = ConvertEncoding(OpenSSL_version(0), Encodings.UTF8)
+		      labLibCryptoTest.Tooltip = "SHA1 of '" + sData + "'"
+		      
+		      //SHA1 Hash
+		      Declare Function SHA1_Init Lib constLibCrypto (c As Ptr) As Integer
+		      Declare Function SHA1_Update Lib constLibCrypto (c As Ptr, data As CString, mlen As Integer) As Integer
+		      Declare Function SHA1_Final Lib constLibCrypto (md As Ptr, c As Ptr) As Integer
+		      
+		      Dim mbSHAContext As New MemoryBlock(256)
+		      
+		      Dim iRes As Integer = SHA1_Init(mbSHAContext)
+		      If (iRes <> 1) Then
+		        Dim err As New RuntimeException
+		        err.Message = "SHA1_Init failed"
+		        Raise err
+		      End If
+		      
+		      iRes = SHA1_Update(mbSHAContext, sData, sData.Bytes)
+		      If (iRes <> 1) Then
+		        Dim err As New RuntimeException
+		        err.Message = "SHA1_Update failed"
+		        Raise err
+		      End If
+		      
+		      Dim mbSHA1Result As New MemoryBlock(20) 'SHA1 Length
+		      iRes = SHA1_Final(mbSHA1Result, mbSHAContext)
+		      If (iRes <> 1) Then
+		        Dim err As New RuntimeException
+		        err.Message = "SHA1_Final failed"
+		        Raise err
+		      End If
+		      
+		      Dim sResultBinary As String = mbSHA1Result
+		      Dim sResult As String = Self.BinaryToHexString(sResultBinary)
+		      labLibCryptoTest.Text = sResult
+		      labLibCryptoTest.TextColor = &c00BB00
+		      
+		      //Double check with Xojo's Crypto
+		      Dim encryptedValue As String = Crypto.Hash(sData, Crypto.HashAlgorithms.SHA1)
+		      Dim sResult2 As String = Self.BinaryToHexString(encryptedValue)
+		      If (sResult <> sResult2) Then
+		        sError = "SHA1 of OpenSSL and Xojo are different"
+		      End If
+		      
+		      
+		    Catch e As FunctionNotFoundException
+		      sError = e.Message
+		    Catch e As RuntimeException
+		      sError = e.Message
+		    End Try
+		    
+		  #Else
+		    sError = "This example is only for TargetMacOS"
+		  #EndIf
+		  
+		  If (sError <> "") Then
+		    labLibCryptoTest.Text = sError
+		    labLibCryptoTest.TextColor = &cFF0000
+		    labLibCryptoTest.Tooltip = sError
 		  End If
 		End Sub
 	#tag EndMethod
@@ -1199,39 +1562,27 @@ End
 		        Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
 		        labOpenSSLVersion.Text = OpenSSL_version(0)
 		        
-		      Case SSLVersion.OpenSSL30
-		        Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.3.dylib"
-		        
-		        Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
-		        labOpenSSLVersion.Text = OpenSSL_version(0)
-		        
 		      Case SSLVersion.OpenSSL35
 		        Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.3.5.dylib"
 		        
 		        Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
 		        labOpenSSLVersion.Text = OpenSSL_version(0)
 		        
-		      Case SSLVersion.OpenSSL36
-		        Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.3.6.dylib"
+		      Case SSLVersion.OpenSSL41
+		        Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.4.1.dylib"
 		        
 		        Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
 		        labOpenSSLVersion.Text = OpenSSL_version(0)
 		        
 		        
-		      Case SSLVersion.LibreSSL392
-		        Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.3.9.2.dylib"
+		      Case SSLVersion.LibreSSL42
+		        Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.4.2.dylib"
 		        
 		        Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
 		        labOpenSSLVersion.Text = OpenSSL_version(0)
 		        
-		      Case SSLVersion.LibreSSL400
-		        Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.4.0.0.dylib"
-		        
-		        Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
-		        labOpenSSLVersion.Text = OpenSSL_version(0)
-		        
-		      Case SSLVersion.LibreSSL421
-		        Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.4.2.1.dylib"
+		      Case SSLVersion.LibreSSL44
+		        Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.4.4.dylib"
 		        
 		        Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
 		        labOpenSSLVersion.Text = OpenSSL_version(0)
@@ -1259,69 +1610,6 @@ End
 	#tag EndMethod
 
 
-	#tag Note, Name = HowTo
-		***********************************
-		* OpenSSL - Bring your own .dylib *
-		***********************************
-		
-		How to: Build OpenSSL
-		---------------------
-		This example is building OpenSSL as a Universal Binary for Intel-64Bit and ARM-64Bit.
-		It requires a macOS Version and Xcode version that is capable of building these two targets.
-		
-		1. Delete all files in the folder 'openssl', except for "build.sh"
-		2. Edit the Build Script "build.sh" with a TextEditor of your choice
-		3. change the variable to the OpenSSL version you're going to build
-		   DOWNLOAD_OPENSSL_VERSION="3.0.11"
-		4. Launch Terminal
-		5. Change to the openssl folder:
-		   cd /path/to/where/you/have/saved/openssl-byo/openssl
-		6. just in case: the build script needs to be executable:
-		   chmod 755 ./build.sh
-		7. Run the Script build.sh:
-		   ./build.sh
-		
-		The build script will perform the following steps:
-		1. Download the OpenSSL source
-		2. Create 2 sub-folders (one for each build target) and extract the source in there
-		3. Build the 2 Targets: arm64, x86_64
-		4. Combine the built .dylibs to a Universal .dylib containing both Targets
-		
-		Note: The build script doesn't do error checking...
-		Should you noot see the expected .dylibs once it finishes, you might want to look into the Shell Output.
-		
-		Result:
-		In your "openssl" folder you should now have 2 files:
-		1. libssl.3.dylib
-		2. libcrypto.3.dylib
-		
-		Note: The version number in the filename is being set automatically according to the version you've built.
-		
-		
-		How to: Use your own OpenSSL .dylib's in a Xojo project
-		-------------------------------------------------------
-		1. Open the example project "openssl-byo.xojo_binary_project"
-		   Or create a new project, use your own, ...
-		2. In the Navigator, go to: Build Settings -> macOS
-		3. Use a "Post Build Step: Copy Files"
-		4. Drag in the two built .dylibs: libssl.3.dylib and libcrypto.3.dylib
-		5. Set the Post Build Script behavior in the Inspector:
-		   1. Applies to: both
-		   2. Subdirectory: (empty)
-		   3. Destination: Framework folder
-		
-		Congratulations - you're ready and set up.
-		You can now use the bundled OpenSSL Library that you have just built in your own project.
-		
-		As an example: Get the OpenSSL Version like this:
-		
-		Const constLibCrypto = "@executable_path/../Frameworks/libcrypto.3.dylib"
-		Declare Function OpenSSL_version Lib constLibCrypto (i As Integer) As CString
-		Me.Text = OpenSSL_version(0)
-		
-	#tag EndNote
-
-
 	#tag Constant, Name = kEmail_Contact, Type = String, Dynamic = False, Default = \"xojo@jo-tools.ch", Scope = Private
 	#tag EndConstant
 
@@ -1335,12 +1623,10 @@ End
 	#tag Enum, Name = SSLVersion, Type = Integer, Flags = &h21
 		OpenSSL098=9
 		  OpenSSL11=11
-		  OpenSSL30=30
 		  OpenSSL35=35
-		  OpenSSL36=36
-		  LibreSSL392=392
-		  LibreSSL400=400
-		LibreSSL421 = 421
+		  OpenSSL41=41
+		  LibreSSL42=420
+		LibreSSL44=440
 	#tag EndEnum
 
 
@@ -1510,28 +1796,22 @@ End
 		  Me.AddRow "OpenSSL 1.1"
 		  Me.RowTagAt(Me.LastAddedRowIndex) = SSLVersion.OpenSSL11
 		  
-		  Me.AddRow "OpenSSL 3.0 (LTS)"
-		  Me.RowTagAt(Me.LastAddedRowIndex) = SSLVersion.OpenSSL30
-		  
 		  Me.AddRow "OpenSSL 3.5 (LTS)"
 		  Me.RowTagAt(Me.LastAddedRowIndex) = SSLVersion.OpenSSL35
 		  
-		  Me.AddRow "OpenSSL 3.6"
-		  Me.RowTagAt(Me.LastAddedRowIndex) = SSLVersion.OpenSSL36
+		  Me.AddRow "OpenSSL 4.1"
+		  Me.RowTagAt(Me.LastAddedRowIndex) = SSLVersion.OpenSSL41
 		  
 		  
 		  Me.AddSeparator
 		  
 		  
 		  'LibreSSL
-		  Me.AddRow "LibreSSL 3.9.2"
-		  Me.RowTagAt(Me.LastAddedRowIndex) = SSLVersion.LibreSSL392
+		  Me.AddRow "LibreSSL 4.2"
+		  Me.RowTagAt(Me.LastAddedRowIndex) = SSLVersion.LibreSSL42
 		  
-		  Me.AddRow "LibreSSL 4.0.0"
-		  Me.RowTagAt(Me.LastAddedRowIndex) = SSLVersion.LibreSSL400
-		  
-		  Me.AddRow "LibreSSL 4.2.1"
-		  Me.RowTagAt(Me.LastAddedRowIndex) = SSLVersion.LibreSSL421
+		  Me.AddRow "LibreSSL 4.4"
+		  Me.RowTagAt(Me.LastAddedRowIndex) = SSLVersion.LibreSSL44
 		  
 		  Me.SelectedRowIndex = 2
 		  

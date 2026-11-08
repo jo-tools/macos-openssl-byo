@@ -1,6 +1,9 @@
 #!/bin/bash
 
-DOWNLOAD_LIBRESSL_VERSION="4.0.0"
+DOWNLOAD_LIBRESSL_VERSION="4.2.3"
+
+#.dylib filenames only contain major.minor (e.g. "4.4"), so that they don't change with each bugfix release
+FILENAME_VERSION_NUMBER=`echo $DOWNLOAD_LIBRESSL_VERSION | cut -d. -f1-2`
 
 #Download
 echo ----------------------------------------------
@@ -29,7 +32,7 @@ echo - Building x86_64
 echo ----------------------------------------------
 export ARCH=x86_64
 export SDK=macosx
-export DEPLOYMENT_TARGET=10.14
+export DEPLOYMENT_TARGET=11.0
 export CFLAGS="-arch $ARCH -isysroot $(xcrun -sdk $SDK --show-sdk-path) -m$SDK-version-min=$DEPLOYMENT_TARGET"
 
 #Build x86_64
@@ -45,7 +48,7 @@ echo - Building arm64
 echo ----------------------------------------------
 export ARCH=arm64
 export SDK=macosx
-export DEPLOYMENT_TARGET=10.14
+export DEPLOYMENT_TARGET=11.0
 export CFLAGS="-arch $ARCH -isysroot $(xcrun -sdk $SDK --show-sdk-path) -m$SDK-version-min=$DEPLOYMENT_TARGET"
 
 #Build arm64
@@ -62,8 +65,19 @@ echo ----------------------------------------------
 
 
 #combine
-lipo -create ./libressl_arm64/crypto/.libs/libcrypto.dylib ./libressl_x86_64/crypto/.libs/libcrypto.dylib -output ./libcrypto.$DOWNLOAD_LIBRESSL_VERSION.dylib
-lipo -create ./libressl_arm64/ssl/.libs/libssl.dylib ./libressl_x86_64/ssl/.libs/libssl.dylib -output ./libssl.$DOWNLOAD_LIBRESSL_VERSION.dylib
+lipo -create ./libressl_arm64/crypto/.libs/libcrypto.dylib ./libressl_x86_64/crypto/.libs/libcrypto.dylib -output ./libcrypto.$FILENAME_VERSION_NUMBER.dylib
+lipo -create ./libressl_arm64/ssl/.libs/libssl.dylib ./libressl_x86_64/ssl/.libs/libssl.dylib -output ./libssl.$FILENAME_VERSION_NUMBER.dylib
+
+echo ----------------------------------------------
+echo - Fix install names
+echo ----------------------------------------------
+
+#libssl should find libcrypto next to itself (e.g. in the app's Frameworks folder)
+OLD_LIBCRYPTO_ID=`otool -D ./libcrypto.$FILENAME_VERSION_NUMBER.dylib | tail -n 1`
+install_name_tool -id @loader_path/libcrypto.$FILENAME_VERSION_NUMBER.dylib ./libcrypto.$FILENAME_VERSION_NUMBER.dylib
+install_name_tool -id @loader_path/libssl.$FILENAME_VERSION_NUMBER.dylib ./libssl.$FILENAME_VERSION_NUMBER.dylib
+install_name_tool -change $OLD_LIBCRYPTO_ID @loader_path/libcrypto.$FILENAME_VERSION_NUMBER.dylib ./libssl.$FILENAME_VERSION_NUMBER.dylib
+otool -L ./libcrypto.$FILENAME_VERSION_NUMBER.dylib ./libssl.$FILENAME_VERSION_NUMBER.dylib
 
 #end
 echo ----------------------------------------------
