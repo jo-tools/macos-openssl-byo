@@ -16,12 +16,10 @@
 					FolderItem = Li4vb3BlbnNzbC8xLjEvbGlic3NsLjEuMS5keWxpYg==
 					FolderItem = Li4vb3BlbnNzbC8wLjkuOHpoL2xpYmNyeXB0by4wLjkuOC5keWxpYg==
 					FolderItem = Li4vb3BlbnNzbC8wLjkuOHpoL2xpYnNzbC4wLjkuOC5keWxpYg==
-					FolderItem = Li4vb3BlbnNzbC8zLjAvbGliY3J5cHRvLjMuZHlsaWI=
-					FolderItem = Li4vb3BlbnNzbC8zLjAvbGlic3NsLjMuZHlsaWI=
 					FolderItem = Li4vb3BlbnNzbC8zLjUvbGliY3J5cHRvLjMuNS5keWxpYg==
 					FolderItem = Li4vb3BlbnNzbC8zLjUvbGlic3NsLjMuNS5keWxpYg==
-					FolderItem = Li4vb3BlbnNzbC8zLjYvbGliY3J5cHRvLjMuNi5keWxpYg==
-					FolderItem = Li4vb3BlbnNzbC8zLjYvbGlic3NsLjMuNi5keWxpYg==
+					FolderItem = Li4vb3BlbnNzbC80LjEvbGliY3J5cHRvLjQuMS5keWxpYg==
+					FolderItem = Li4vb3BlbnNzbC80LjEvbGlic3NsLjQuMS5keWxpYg==
 				End
 				Begin CopyFilesBuildStep CopyLibreSSL
 					AppliesTo = 0
@@ -29,12 +27,10 @@
 					Target = 0
 					Destination = 2
 					Subdirectory = 
-					FolderItem = Li4vbGlicmVzc2wvMy45LjIvbGliY3J5cHRvLjMuOS4yLmR5bGli
-					FolderItem = Li4vbGlicmVzc2wvMy45LjIvbGlic3NsLjMuOS4yLmR5bGli
-					FolderItem = Li4vbGlicmVzc2wvNC4wLjAvbGliY3J5cHRvLjQuMC4wLmR5bGli
-					FolderItem = Li4vbGlicmVzc2wvNC4wLjAvbGlic3NsLjQuMC4wLmR5bGli
-					FolderItem = Li4vbGlicmVzc2wvNC4yLjEvbGliY3J5cHRvLjQuMi4xLmR5bGli
-					FolderItem = Li4vbGlicmVzc2wvNC4yLjEvbGlic3NsLjQuMi4xLmR5bGli
+					FolderItem = Li4vbGlicmVzc2wvNC4yL2xpYmNyeXB0by40LjIuZHlsaWI=
+					FolderItem = Li4vbGlicmVzc2wvNC4yL2xpYnNzbC40LjIuZHlsaWI=
+					FolderItem = Li4vbGlicmVzc2wvNC40L2xpYmNyeXB0by40LjQuZHlsaWI=
+					FolderItem = Li4vbGlicmVzc2wvNC40L2xpYnNzbC40LjQuZHlsaWI=
 				End
 				Begin SignProjectStep Sign
 				  DeveloperID=
